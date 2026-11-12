@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Low-fidelity wireframe for triple. digital studio."
+    />
+    <title>triple. — Wireframe</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" data-wire-label="Sticky anchor nav">
+      <a class="wordmark" href="#top" aria-label="triple studio home">
+        <span class="wordmark-name">
+          <span class="wordmark-primary">triple<span class="wordmark-dot" aria-hidden="true">.</span></span>
+          <span class="wordmark-studio">studio</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#services">Service</a>
+        <a href="#process">How we work</a>
+        <a href="#team">Team</a>
+        <a class="nav-cta" href="#contact">Book a chat</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="top" class="section hero" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <h1 id="hero-heading">You bring the idea.<br />We bring it to life.</h1>
+          <p class="hero-intro">
+            We help teams turn ideas into clear, useful digital products—designed and built together from first concept to launch.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Book a chat</a>
+            <a class="text-link" href="#services">See what we make</a>
+          </div>
+        </div>
+
+        <div class="motion-canvas" aria-label="Geometric composition showing triple studio capabilities">
+        </div>
+      </section>
+
+      <section id="services" class="section services" aria-labelledby="services-heading">
+        <div class="services__header">
+          <div class="services__intro">
+            <h2 id="services-heading">How can<br />we help?</h2>
+          </div>
+
+          <div class="services__chooser">
+            <p class="services__summary">
+              Bring us the whole project, or get help with the part that needs
+              attention. We’ll find the right way to work together.
+            </p>
+            <div
+              class="services__switch"
+              role="tablist"
+              aria-label="Choose how you would like to work together"
+              data-active="whole"
+            >
+              <button
+                class="services__switch-button is-active"
+                id="services-whole-tab"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="services-stack"
+                data-mode="whole"
+              >
+                <span class="services__switch-dot" aria-hidden="true"></span>
+                The whole thing
+              </button>
+              <button
+                class="services__switch-button"
+                id="services-part-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="services-stack"
+                data-mode="part"
+                tabindex="-1"
+              >
+                <span class="services__switch-dot" aria-hidden="true"></span>
+                One part
+              </button>
+              <span class="services__switch-thumb" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="services__stack"
+          id="services-stack"
+          role="tabpanel"
+          aria-labelledby="services-whole-tab"
+        >
+          <article class="services__step">
+            <div class="services__card services__card--website">
+              <div class="services__copy">
+                <p
+                  class="services__meta"
+                  data-whole-meta="Complete project"
+                  data-part-meta="Focused support"
+                >
+                  Complete project
+                </p>
+                <h3
+                  data-whole-title="Website"
+                  data-part-title="Research &amp; Strategy"
+                >
+                  Website
+                </h3>
+                <p
+                  class="services__description"
+                  data-whole-description="Clear, responsive websites that give people a reason to stay and act."
+                  data-part-description="User research, competitor analysis and product planning to help you decide what to make."
+                >
+                  Clear, responsive websites that give people a reason to stay and act.
+                </p>
+                <p
+                  class="services__scope"
+                  data-whole-scope="Design, build, test and launch"
+                  data-part-scope="User research, product strategy and planning"
+                >
+                  Design, build, test and launch
+                </p>
+              </div>
+              <div class="services__visual services__visual--website" aria-hidden="true">
+                <div class="services__window">
+                  <div class="services__window-bar"><i></i><i></i><i></i></div>
+                  <div class="services__window-hero">
+                    <span class="services__line services__line--wide"></span>
+                    <span class="services__line services__line--mid"></span>
+                    <span class="services__pill"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="services__step">
+            <div class="services__card services__card--web-app">
+              <div class="services__copy">
+                <p
+                  class="services__meta"
+                  data-whole-meta="Complete project"
+                  data-part-meta="Focused support"
+                >
+                  Complete project
+                </p>
+                <h3 data-whole-title="Web App" data-part-title="UX/UI Design">
+                  Web App
+                </h3>
+                <p
+                  class="services__description"
+                  data-whole-description="Useful browser-based products shaped around real user needs."
+                  data-part-description="User flows, wireframes and prototypes that make a product easier to use."
+                >
+                  Useful browser-based products shaped around real user needs.
+                </p>
+                <p
+                  class="services__scope"
+                  data-whole-scope="Design, develop, test and launch"
+                  data-part-scope="Flows, wireframes and interface design"
+                >
+                  Design, develop, test and launch
+                </p>
+              </div>
+              <div class="services__visual services__visual--web-app" aria-hidden="true">
+                <div class="services__board">
+                  <div class="services__board-side">
+                    <span class="services__line"></span>
+                    <span class="services__line"></span>
+                    <span class="services__line"></span>
+                  </div>
+                  <div class="services__board-main">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="services__step">
+            <div class="services__card services__card--mobile">
+              <div class="services__copy">
+                <p
+                  class="services__meta"
+                  data-whole-meta="Complete project"
+                  data-part-meta="Focused support"
+                >
+                  Complete project
+                </p>
+                <h3 data-whole-title="Mobile App" data-part-title="Development">
+                  Mobile App
+                </h3>
+                <p
+                  class="services__description"
+                  data-whole-description="Focused mobile experiences for the moments that matter."
+                  data-part-description="Frontend, backend and custom functionality built around the experience you need."
+                >
+                  Focused mobile experiences for the moments that matter.
+                </p>
+                <p
+                  class="services__scope"
+                  data-whole-scope="Design, develop, test and launch"
+                  data-part-scope="Frontend, backend and custom features"
+                >
+                  Design, develop, test and launch
+                </p>
+              </div>
+              <div class="services__visual services__visual--mobile" aria-hidden="true">
+                <div class="services__phone">
+                  <div class="services__phone-screen">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="services__step">
+            <div class="services__card services__card--redesign">
+              <div class="services__copy">
+                <p
+                  class="services__meta"
+                  data-whole-meta="Complete project"
+                  data-part-meta="Focused support"
+                >
+                  Complete project
+                </p>
+                <h3
+                  data-whole-title="Redesign &amp; Rebuild"
+                  data-part-title="Testing &amp; Launch"
+                >
+                  Redesign &amp; Rebuild
+                </h3>
+                <p
+                  class="services__description"
+                  data-whole-description="Give your existing website or app a clearer experience and a stronger foundation."
+                  data-part-description="Quality checks, deployment and launch support to help your product go live with confidence."
+                >
+                  Give your existing website or app a clearer experience and a stronger foundation.
+                </p>
+                <p
+                  class="services__scope"
+                  data-whole-scope="Revisit, rebuild and relaunch"
+                  data-part-scope="Quality assurance, deployment and launch"
+                >
+                  Revisit, rebuild and relaunch
+                </p>
+              </div>
+              <div class="services__visual services__visual--redesign" aria-hidden="true">
+                <div class="services__compare">
+                  <div class="services__compare-old"><span></span><span></span><span></span></div>
+                  <div class="services__compare-new"><span></span><span></span><span></span></div>
+                  <span class="services__compare-mark">↗</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="services__step">
+            <div class="services__card services__card--cta">
+              <div class="services__cta-copy">
+                <p class="services__cta-label">Still figuring it out?</p>
+                <h3>Not sure what you need?</h3>
+              </div>
+              <div class="services__cta-action">
+                <p>Tell us a little about your idea. We’ll work out the next steps together.</p>
+                <a class="services__cta-link" href="#contact">
+                  <span>Book a chat</span>
+                  <span class="services__cta-mark" aria-hidden="true">↗</span>
+                </a>
+                <p class="services__pricing-note">Pricing is shaped around your project scope, complexity and stage.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="sr-only" id="services-mode-status" aria-live="polite"></p>
+      </section>
+
+      <section id="process" class="section process" aria-labelledby="process-heading">
+        <div class="process-head">
+          <div class="section-heading">
+            <h2 id="process-heading">A clear path from idea to launch</h2>
+            <p>For new and growing teams shaping, improving or launching a digital product.</p>
+          </div>
+        </div>
+
+        <ol class="process-list">
+          <li>
+            <span>01</span>
+            <h3>Discover &amp; scope</h3>
+            <p>We clarify the idea, the people it serves and what belongs in the first release.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Design</h3>
+            <p>We shape the structure and experience, then make the key decisions visible.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>Develop</h3>
+            <p>We build the agreed experience and keep progress easy to follow.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <h3>Test &amp; launch</h3>
+            <p>We check the details, prepare the release and help you take it live.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="team" class="section team" aria-labelledby="team-heading">
+        <div class="section-heading team-heading">
+          <h2 id="team-heading">The people who make it happen</h2>
+          <p>Strategy, design and development stay connected from the first conversation to launch.</p>
+        </div>
+
+        <div class="team-grid" style="background: var(--yellow); padding: 48px; border-radius: 12px" aria-hidden="true">
+          <article class="team-member">
+            <div class="portrait-placeholder" role="img" aria-label="Portrait placeholder for team member two">
+              <span>Portrait placeholder</span>
+            </div>
+            <div>
+              <h3>Peter Wei</h3>
+              <p class="team-role">PM & Full-Stack Engineer</p>
+            </div>
+          </article>
+          <article class="team-member">
+            <div class="portrait-placeholder" role="img" aria-label="Portrait placeholder for team member three">
+              <span>Portrait placeholder</span>
+            </div>
+            <div>
+              <h3>Daniel Wang</h3>
+              <p class="team-role">Full-Stack Engineer</p>
+            </div>
+          </article>
+          <article class="team-member">
+            <div class="portrait-placeholder" role="img" aria-label="Portrait placeholder for team member one">
+              <span>Portrait placeholder</span>
+            </div>
+            <div>
+              <h3>Wen Kao</h3>
+              <p class="team-role">Product Designer</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact" aria-labelledby="contact-heading">
+        <div class="contact-copy">
+          <h2 id="contact-heading">Tell us what you’re thinking</h2>
+          <p>
+            Share the rough idea. We’ll learn a little more and find a time to chat.
+          </p>
+        </div>
+
+        <form class="contact-form" action="#contact" method="post">
+          <div class="compose-header">New chat request</div>
+          <div class="form-field">
+            <label for="name">I am</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name or team" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Reach me through email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-field project-field" role="radiogroup" aria-labelledby="project-label">
+            <div id="project-label" class="form-legend">I want to chat about ideas for my</div>
+            <div class="project-options">
+              <label><input type="radio" name="project" value="web-app" required /><span>Web App</span></label>
+              <label><input type="radio" name="project" value="mobile-app" /><span>Mobile App</span></label>
+              <label><input type="radio" name="project" value="website" /><span>Website</span></label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="content">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              rows="5"
+              placeholder="The idea, where you’re at, and what you’d like help with."
+              required
+            ></textarea>
+          </div>
+
+          <div class="compose-actions">
+            <button class="button button-primary submit-button" type="submit">Request a chat</button>
+            <p class="form-note">We'll be in touch soon to arrange a chat.</p>
+          </div>
+          <div class="form-status" role="status" aria-live="polite" hidden>
+            Request captured for this wireframe. In the live site, this would be sent to the studio.
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="#top" aria-label="triple home">
+        <span class="wordmark-name">triple<span class="wordmark-dot" aria-hidden="true">.</span></span>
+      </a>
+      <p>Australian digital studio · Website / Web App / Mobile App</p>
+      <a href="#top">Back to top</a>
+    </footer>
+  </body>
+</html>
