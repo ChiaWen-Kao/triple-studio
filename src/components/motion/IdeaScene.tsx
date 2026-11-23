@@ -1,77 +1,67 @@
-import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
-
-const Ballpit = lazy(() => import('../../vendor/react-bits/Ballpit'));
-const colors = ['#f7e7a8', '#ed2616', '#f8f8f4', '#e9be32'];
+import { useRef, useState } from 'react';
+import { team } from '../../constants/team';
+import { useMascotMotion } from '../../hooks/useMascotMotion';
+import { Mascot } from '../Mascot';
 
 export function IdeaScene() {
-  const [paused, setPaused] = useState(
-    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
-  const [available, setAvailable] = useState(true);
-  const [burstSignal, setBurstSignal] = useState(0);
-  const handleUnavailable = useCallback(() => setAvailable(false), []);
-  useEffect(() => {
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const updatePreference = () => setPaused(preference.matches);
-    preference.addEventListener('change', updatePreference);
-    return () => preference.removeEventListener('change', updatePreference);
-  }, []);
-  const stirIdeas = () => {
-    setPaused(false);
-    setBurstSignal((signal) => signal + 1);
-  };
-  return (
-    <div className="idea-scene" role="region" aria-label="Play with the ideas">
-      {available && (
-        <Suspense fallback={<SceneFallback />}>
-          <Ballpit
-            style={{ position: 'absolute', inset: 0 }}
-            count={90}
-            colors={colors}
-            material="satin"
-            gravity={0}
-            drift={0.65}
-            minSize={0.7}
-            maxSize={1.4}
-            depth={3}
-            intro={false}
-            dpr={1.5}
-            paused={paused}
-            burstSignal={burstSignal}
-            onUnavailable={handleUnavailable}
-          />
-        </Suspense>
-      )}
-      {!available && <SceneFallback />}
-      {available && (
-        <div className="scene-controls">
-          <button
-            className="scene-stir"
-            onClick={stirIdeas}
-            aria-label="Move the ideas"
-          >
-            <span aria-hidden="true">✳</span>
-          </button>
-          <button
-            className="motion-toggle"
-            onClick={() => setPaused(!paused)}
-            aria-pressed={paused}
-            aria-label={paused ? 'Play motion' : 'Pause motion'}
-          >
-            <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
+  const scene = useRef<HTMLDivElement>(null);
+  const { paused, setPaused } = useMascotMotion(scene);
+  const [jump, setJump] = useState({ id: '', count: 0 });
 
-function SceneFallback() {
   return (
-    <div className="scene-fallback" aria-hidden="true">
-      <span>●</span>
-      <span>●</span>
-      <span>●</span>
+    <div
+      ref={scene}
+      className="idea-scene mascot-scene"
+      role="region"
+      aria-label="The Wendava team"
+      data-paused={paused}
+    >
+      <div className="mascot-horizon" aria-hidden="true" />
+      <div className="mascot-stars" aria-hidden="true">
+        {Array.from({ length: 12 }, (_, index) => (
+          <i key={index} />
+        ))}
+      </div>
+      <div className="mascot-world">
+        <div className="mascot-orbit" aria-hidden="true" />
+        {team.map((person) => (
+          <button
+            key={person.id}
+            className={`mascot-island mascot-island--${person.id}`}
+            aria-label={`Animate ${person.name}`}
+            onClick={() =>
+              setJump(({ count }) => ({ id: person.id, count: count + 1 }))
+            }
+          >
+            <span className="mascot-float">
+              <span
+                key={jump.id === person.id ? jump.count : 0}
+                className={
+                  jump.id === person.id
+                    ? 'mascot-character is-jumping'
+                    : 'mascot-character'
+                }
+              >
+                <Mascot sprite={person.sprite} eager />
+              </span>
+              <span className="mascot-platform" aria-hidden="true" />
+            </span>
+          </button>
+        ))}
+        <span className="mascot-cube mascot-cube--one" aria-hidden="true" />
+        <span className="mascot-cube mascot-cube--two" aria-hidden="true" />
+        <span className="mascot-cube mascot-cube--three" aria-hidden="true" />
+      </div>
+      <div className="scene-controls">
+        <button
+          className="motion-toggle"
+          onClick={() => setPaused(!paused)}
+          aria-pressed={paused}
+          aria-label={paused ? 'Play motion' : 'Pause motion'}
+        >
+          <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
+        </button>
+      </div>
     </div>
   );
 }

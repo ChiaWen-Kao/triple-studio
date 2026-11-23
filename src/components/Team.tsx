@@ -1,8 +1,6 @@
-const people = [
-  { name: 'Wen Kao', role: 'Product Designer', initials: 'WK' },
-  { name: 'Peter Wei', role: 'PM & Full-Stack Engineer', initials: 'PW' },
-  { name: 'Daniel Wang', role: 'Full-Stack Engineer', initials: 'DW' },
-];
+import { team } from '../constants/team';
+import { Mascot } from './Mascot';
+
 export function Team() {
   return (
     <section
@@ -24,15 +22,13 @@ export function Team() {
         </p>
       </div>
       <div className="people-grid">
-        {people.map((person) => (
+        {team.map((person) => (
           <article className="person" key={person.name}>
-            <div
-              className="person-placeholder"
-              role="img"
-              aria-label={`Portrait placeholder for ${person.name}`}
-            >
-              <span aria-hidden="true">{person.initials}</span>
-              <small>Portrait coming soon</small>
+            <div className={`person-portrait person-portrait--${person.id}`}>
+              <Mascot
+                sprite={person.sprite}
+                name={`${person.name}, Wendava pixel character`}
+              />
             </div>
             <h3>{person.name}</h3>
             <p>{person.role}</p>

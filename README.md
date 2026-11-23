@@ -39,7 +39,7 @@ npm run preview
 
 ## Motion and accessibility
 
-The hero embeds React Bits Ballpit with Wendava colors, physical collisions, drag-and-throw interaction, a keyboard-accessible impulse button and a pause control. React Bits Scroll Reveal provides the word-by-word introduction. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
+The hero presents the three Wendava pixel characters on floating islands. Each character responds to clicks, taps and keyboard activation. A pause control stops the scene; reduced motion removes floating, jumping and scroll parallax. The portrait layout places Wen above Peter and Daniel so all three stay visible on phones. The shared transparent character sheet also supplies the team portraits. React Bits Scroll Reveal provides the word-by-word introduction. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
 
 Case studies advance every 6.5 seconds only while visible. Text and animation share one chapter index. Hover and keyboard focus pause advancement; manual chapter selection pauses until Play is requested. Reduced motion disables autoplay and pinned scene transitions, retaining the information and manual controls. On phones, each case keeps its animation, chapter text and controls together in a compact card. Horizontal swipes select a chapter; vertical gestures remain page scrolling. The three process chapters retain their pinned, scroll-driven transitions on phones as well as desktops. Reduced-motion preferences and short landscape viewports switch the process to a flowing reading layout so chapter text cannot be trapped below the screen.
 
@@ -60,7 +60,7 @@ The mobile layout follows observations of [Lusion](https://lusion.co/) (portrait
 
 ## Content and search
 
-The three case studies are explicitly marked as placeholders. Replace the reserved challenge, outcome and learning text in `src/constants/cases.ts` with approved project information. Team names and roles come from the original site; portraits remain placeholders. Do not add unverified customer claims or performance metrics.
+The three case studies are explicitly marked as placeholders. Replace the reserved challenge, outcome and learning text in `src/constants/cases.ts` with approved project information. Team names and roles come from the original site; pixel portraits use the supplied Wendava character designs. Do not add unverified customer claims or performance metrics.
 
 The build adds a readable HTML introduction and questions before the interactive application loads. FAQ structured data and visible answers use the same content file. Organization, website and service data, canonical metadata, social descriptions and `sitemap.xml` use the GitHub Pages URL. Update the canonical URLs in `index.html` and the build script together when changing the domain. Structured data does not guarantee inclusion or enhanced display in search results.
 

@@ -1,0 +1,259 @@
+.mascot-sprite {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+}
+.mascot-sprite img {
+  position: absolute;
+  top: 0;
+  width: 300%;
+  max-width: none;
+  height: 100%;
+  image-rendering: pixelated;
+  user-select: none;
+}
+.mascot-scene {
+  --space: #17162e;
+  --violet: #a78bfa;
+  --lime: #d9f376;
+  --scene-travel: 0px;
+  isolation: isolate;
+  background: radial-gradient(
+    ellipse at 50% 110%,
+    #7873be 0%,
+    #39385d 35%,
+    var(--space) 75%
+  );
+}
+.mascot-world {
+  position: absolute;
+  width: min(82%, 65rem);
+  height: 82%;
+  left: 50%;
+  top: 7%;
+  transform: translate(-50%, var(--scene-travel));
+}
+.mascot-horizon {
+  position: absolute;
+  width: 75%;
+  aspect-ratio: 1;
+  left: 12.5%;
+  top: 28%;
+  border: 1px solid #c5b2ff6b;
+  border-radius: 50%;
+  box-shadow:
+    0 -10px 55px #b09aff35,
+    inset 0 15px 40px #ab95ff20;
+}
+.mascot-orbit {
+  position: absolute;
+  inset: 20% -8% 5%;
+  border: 1px solid #e8ddff24;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+.mascot-island {
+  position: absolute;
+  width: 32%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mascot-island:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 8px;
+  border-radius: 1rem;
+}
+.mascot-island--peter {
+  left: 0;
+  top: 34%;
+  --island-color: #789cff;
+  --float-delay: -1s;
+}
+.mascot-island--wen {
+  left: 34%;
+  top: 10%;
+  --island-color: #c4a1ff;
+  --float-delay: -3s;
+}
+.mascot-island--daniel {
+  left: 68%;
+  top: 34%;
+  --island-color: #d9f376;
+  --float-delay: -5s;
+}
+.mascot-float {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: mascot-float 6s ease-in-out infinite;
+  animation-delay: var(--float-delay);
+}
+.mascot-character {
+  position: absolute;
+  width: 100%;
+  bottom: 12%;
+  left: 0;
+  z-index: 2;
+}
+.mascot-platform {
+  display: block;
+  position: absolute;
+  width: 85%;
+  height: 25%;
+  left: 7.5%;
+  bottom: 0;
+  background: linear-gradient(155deg, #fff 0%, var(--island-color) 65%);
+  clip-path: polygon(50% 0, 100% 28%, 100% 70%, 50% 100%, 0 70%, 0 28%);
+  filter: drop-shadow(0 20px 20px #0004);
+}
+.mascot-platform::after {
+  content: '';
+  position: absolute;
+  inset: 28% 0 0;
+  background: linear-gradient(90deg, #13142e50 50%, #ffffff30 50%);
+  clip-path: polygon(0 0, 50% 42%, 100% 0, 100% 100%, 0 100%);
+}
+.mascot-cube {
+  position: absolute;
+  width: 2.8%;
+  aspect-ratio: 1;
+  background: var(--violet);
+  box-shadow: inset -8px -8px #0003;
+  transform: rotate(-15deg);
+  animation: mascot-float 7s ease-in-out infinite;
+}
+.mascot-cube--one {
+  left: 7%;
+  top: 17%;
+}
+.mascot-cube--two {
+  right: 8%;
+  top: 8%;
+  background: var(--lime);
+  animation-delay: -2s;
+}
+.mascot-cube--three {
+  left: 51%;
+  bottom: 0;
+  animation-delay: -4s;
+}
+.mascot-scene .scene-controls {
+  left: auto;
+}
+.is-jumping {
+  animation: mascot-jump 0.65s cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+.mascot-scene[data-paused='true'] *,
+.mascot-scene[data-visible='false'] * {
+  animation-play-state: paused;
+}
+@keyframes mascot-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -15px;
+  }
+}
+@keyframes mascot-jump {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(-32px) rotate(-6deg);
+  }
+  65% {
+    transform: translateY(-20px) rotate(4deg);
+  }
+}
+.person-portrait {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: #e9e0fb;
+}
+.person-portrait--peter {
+  background: #dee6fc;
+}
+.person-portrait--daniel {
+  background: #e6edcc;
+}
+.person-portrait .mascot-sprite {
+  width: 85%;
+  transition: transform 0.4s var(--motion-ease);
+}
+.person:hover .mascot-sprite {
+  transform: translateY(-8px);
+}
+@media (max-width: 767px) {
+  .mascot-world {
+    width: 94%;
+    height: 90%;
+    top: 5%;
+  }
+  .mascot-island {
+    width: 44%;
+  }
+  .mascot-island--wen {
+    left: 28%;
+    top: 8%;
+  }
+  .mascot-island--peter {
+    left: 0;
+    top: 46%;
+  }
+  .mascot-island--daniel {
+    left: 56%;
+    top: 46%;
+  }
+  .mascot-horizon {
+    width: 150%;
+    left: -25%;
+    top: 29%;
+  }
+  .mascot-orbit {
+    inset: 30% -20% 15%;
+  }
+  .mascot-cube--one {
+    top: 20%;
+    left: 12%;
+  }
+  .mascot-cube--two {
+    top: 32%;
+    right: 8%;
+  }
+  .mascot-cube--three {
+    bottom: 10%;
+  }
+  .person-portrait {
+    aspect-ratio: 5/3;
+  }
+  .person-portrait .mascot-sprite {
+    width: 60%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot-scene *,
+  .person-portrait .mascot-sprite {
+    animation: none !important;
+    transition: none;
+  }
+  .mascot-world {
+    transform: translateX(-50%);
+  }
+  .person:hover .mascot-sprite {
+    transform: none;
+  }
+}
