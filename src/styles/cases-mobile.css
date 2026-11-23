@@ -1,3 +1,6 @@
+.case-visual {
+  user-select: none;
+}
 .case-step-navigation {
   display: none;
 }
