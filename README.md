@@ -27,7 +27,9 @@ npm run preview
 
 - `src/components/motion/` — hero, scroll chapters and the spatial transition
 - `src/graphics/` — procedural connector geometry and Three.js scene lifecycles
-- `src/components/cases/` — coordinated text and visual case-study chapters
+- `src/components/cases/` — featured-work grid, project viewer and coordinated case-study chapters
+- `src/hooks/useProjectRail.ts` — horizontal desktop browsing and sustained-scroll next-project navigation
+- `src/hooks/useProjectNavigation.ts` — project deep links and browser history
 - `src/hooks/useCaseCarousel.ts` — visibility, playback and chapter timing
 - `src/constants/cases.ts` — three case studies and their chapter content
 - `src/constants/questions.json` — shared visible questions and search content
@@ -49,7 +51,10 @@ The mobile layout follows observations of [Lusion](https://lusion.co/) (portrait
 
 - The hero fills the first screen below a compact header, with visible motion controls and a scroll cue.
 - Native modal navigation contains focus, locks background scrolling and restores focus when closed.
-- Cases lead with animation, followed by chapter tabs and text. Horizontal drags have visible resistance; arrows and tabs provide equivalent controls. Vertical and cancelled gestures do not change chapters.
+- The featured-work grid uses two columns on desktop and one column with 15px gutters on phones. Previews retain a 20:13 aspect ratio. Titles roll into view; desktop hover reveals the arrow and moves the title.
+- Project details scroll horizontally on desktop and vertically on phones. Continuing to scroll at the desktop endpoint fills a 4.5-second progress indicator and opens the next project; stopping clears progress. The next-project preview expands to fill the screen before the new story appears. A button offers direct navigation; reduced motion skips the transition.
+- Project links support direct entry and browser history. Back and Escape close the viewer, restore page scrolling and return focus to the originating tile.
+- Case chapters retain synchronized text and visuals inside each project. Horizontal drags select chapters; arrows and tabs provide equivalent controls. Vertical and cancelled gestures do not change chapters.
 - Mobile process and portal scroll distances are shorter than desktop, with progress labels and direct links to the next content section.
 - The breakpoint is 768px. Reduced-motion preferences retain readable content and manual navigation.
 

@@ -1,0 +1,205 @@
+.work-gallery {
+  max-width: none;
+  padding-inline: 5vw;
+}
+.work-gallery-heading {
+  max-width: none;
+  margin: 0 0 0 -0.5vw;
+  padding-top: 4vw;
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2vw;
+  row-gap: 4.5vw;
+}
+.work-tile {
+  display: block;
+  min-width: 0;
+  perspective: 1200px;
+  text-decoration: none;
+}
+.work-tile-media {
+  position: relative;
+  aspect-ratio: 20 / 13;
+  overflow: hidden;
+  border-radius: 1.4vw;
+}
+.work-tile-media > .case-visual {
+  height: 100%;
+  min-height: 0;
+  transform: scale(1.025);
+  transition: transform 0.8s var(--motion-ease);
+}
+.work-tile-media .visual-caption,
+.work-tile-media .visual-corner {
+  display: none;
+}
+.work-tile-category {
+  font-size: clamp(0.65rem, 0.9vw, 1rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  margin: 1.35vw 0 0.9vw;
+}
+.work-tile-title {
+  position: relative;
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+.work-tile-name {
+  display: inline-block;
+  transition: transform 0.6s var(--motion-ease);
+}
+.work-tile-arrow {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateX(-0.6em);
+  transition:
+    transform 0.6s var(--motion-ease),
+    opacity 0.3s;
+}
+.work-letter {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.15em;
+  vertical-align: top;
+}
+.work-letter > span,
+.work-letter > span > span {
+  display: block;
+  height: 1.15em;
+}
+.work-gallery-note {
+  margin: 3rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+@media (hover: hover) {
+  .work-tile:hover .work-tile-media > .case-visual {
+    transform: scale(1.08);
+  }
+  .work-tile:hover .work-tile-name {
+    transform: translateX(1.5em);
+  }
+  .work-tile:hover .work-tile-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.work-tile:focus-visible .work-tile-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.work-tile:focus-visible .work-tile-name {
+  transform: translateX(1.5em);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .work-tile:not(.is-revealed) .work-letter > span {
+    transform: translateY(-300%);
+  }
+  .work-tile.is-revealed .work-tile-media {
+    animation: work-media-settle 1.1s var(--motion-ease) both;
+  }
+  .work-tile:nth-child(even) {
+    --media-angle: 1.5deg;
+  }
+  .work-tile.is-revealed .work-letter > span {
+    animation: work-letter-roll 1.1s var(--motion-ease) both;
+    animation-delay: calc(var(--letter-index) * 0.025s);
+  }
+  .work-gallery-heading.is-revealed {
+    animation: work-heading-rise 0.9s var(--motion-ease) both;
+  }
+}
+@keyframes work-media-settle {
+  from {
+    transform: rotateX(8deg) rotateY(-6deg) rotateZ(var(--media-angle, -1.5deg))
+      scale(0.96);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes work-letter-roll {
+  from {
+    transform: translateY(-300%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes work-heading-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 767px) {
+  .work-gallery {
+    padding-inline: 15px;
+  }
+  .work-gallery-heading {
+    font-size: 15vw;
+    max-width: 8ch;
+    margin-bottom: 2rem;
+  }
+  .work-grid {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+  .work-tile-category {
+    margin: 0.9rem 0 0.25rem;
+    font-size: 0.65rem;
+  }
+  .work-tile-title {
+    font-size: 1.45rem;
+  }
+  .work-tile-arrow {
+    opacity: 1;
+    transform: none;
+  }
+  .work-tile-name {
+    transform: translateX(1.5em);
+  }
+}
+.work-gallery-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4.5vw;
+}
+.work-gallery-intro > p {
+  width: 21vw;
+  margin: 0;
+  font-size: clamp(0.65rem, 0.9vw, 1rem);
+  text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  .work-gallery-intro {
+    display: block;
+    margin-bottom: 2rem;
+  }
+  .work-gallery-intro > p {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+  .work-gallery-heading {
+    padding-top: 7.5vw;
+    margin-bottom: 2.5rem;
+  }
+  .work-tile-media {
+    border-radius: 0.65rem;
+  }
+}

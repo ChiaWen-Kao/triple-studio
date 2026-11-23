@@ -7,6 +7,7 @@ export type CasePhase = {
 export type CaseStudy = {
   id: string;
   title: string;
+  galleryTitle: string;
   category: string;
   theme: 'product' | 'operations' | 'experience';
   phases: [CasePhase, CasePhase, CasePhase];

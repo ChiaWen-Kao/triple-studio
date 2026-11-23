@@ -43,25 +43,22 @@ export function IdeaScene() {
         </Suspense>
       )}
       {!available && <SceneFallback />}
-      <div className="scene-caption">
-        <span>Good ideas move things.</span>
-        <span>
-          {available
-            ? 'Drag sideways. Tap the space.'
-            : 'Different perspectives. One shared direction.'}
-        </span>
-      </div>
       {available && (
         <div className="scene-controls">
-          <button className="scene-stir" onClick={stirIdeas}>
-            Stir the ideas ↗
+          <button
+            className="scene-stir"
+            onClick={stirIdeas}
+            aria-label="Move the ideas"
+          >
+            <span aria-hidden="true">✳</span>
           </button>
           <button
             className="motion-toggle"
             onClick={() => setPaused(!paused)}
             aria-pressed={paused}
+            aria-label={paused ? 'Play motion' : 'Pause motion'}
           >
-            {paused ? 'Play motion' : 'Pause motion'}
+            <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
           </button>
         </div>
       )}

@@ -1,0 +1,107 @@
+@media (max-width: 767px) {
+  .project-header {
+    height: 5rem;
+    padding: 0 15px;
+    background: var(--ink);
+  }
+  .project-brand {
+    font-size: 1.6rem;
+  }
+  .project-back {
+    position: static;
+  }
+  .project-header-label {
+    display: none;
+  }
+  .project-rail {
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
+  }
+  .project-track {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    padding: 6.25rem 15px 0;
+    gap: 2.5rem;
+  }
+  .project-introduction {
+    flex: none;
+  }
+  .project-introduction-content {
+    width: 100%;
+  }
+  .project-introduction h2 {
+    font-size: 4.5rem;
+    max-width: none;
+    margin-bottom: 3.5rem;
+  }
+  .project-summary {
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .project-summary dl {
+    grid-column: auto;
+    grid-row: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .project-summary dt {
+    font-size: 0.85rem;
+  }
+  .project-summary dd {
+    margin-bottom: 1.5rem;
+  }
+  .project-explore {
+    margin-top: 0;
+  }
+  .project-hero-media {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 20 / 13;
+    border-radius: 0.65rem;
+  }
+  .project-hero-media > .case-visual {
+    height: 100%;
+  }
+  .project-story-panel {
+    height: auto;
+    width: 100%;
+  }
+  .project-story-panel .case-study {
+    height: auto;
+  }
+  .project-story-panel .case-copy {
+    display: contents;
+  }
+  .project-story-panel .case-visual {
+    height: clamp(17rem, 40svh, 23rem);
+  }
+  .project-story-panel .case-copy h3 {
+    font-size: 1.9rem;
+  }
+  .project-next {
+    width: calc(100% + 30px);
+    min-width: 0;
+    margin-inline: -15px;
+    min-height: 70svh;
+    padding: 3rem 15px 6rem;
+  }
+  .project-next-title {
+    width: 100%;
+    max-width: 10ch;
+    font-size: clamp(3rem, 13vw, 5rem);
+  }
+  .project-next-label {
+    left: 15px;
+    right: 15px;
+  }
+  .project-scroll-cue {
+    display: none;
+  }
+}

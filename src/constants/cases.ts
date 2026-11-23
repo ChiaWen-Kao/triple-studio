@@ -4,6 +4,7 @@ export const CASE_INTERVAL_MS = 6500;
 export const caseStudies: CaseStudy[] = [
   {
     id: 'product',
+    galleryTitle: 'Product idea',
     title: 'An idea people can use.',
     category: 'Product design & development',
     theme: 'product',
@@ -33,6 +34,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'operations',
+    galleryTitle: 'Connected workflows',
     title: 'Less busywork. More progress.',
     category: 'Business tools & connected workflows',
     theme: 'operations',
@@ -62,6 +64,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'experience',
+    galleryTitle: 'Digital experience',
     title: 'A clearer way to connect.',
     category: 'Websites & digital experiences',
     theme: 'experience',

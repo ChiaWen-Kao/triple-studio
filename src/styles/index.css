@@ -16,3 +16,8 @@
 
 @import './mobile-experience.css';
 @import './navigation.css';
+
+@import './work-gallery.css';
+
+@import './project-detail.css';
+@import './project-detail-mobile.css';

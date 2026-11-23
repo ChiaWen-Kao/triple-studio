@@ -154,9 +154,6 @@ export function IdeaJourney() {
             </div>
           ))}
         </div>
-        <span className="journey-footnote" aria-hidden="true">
-          Ideas take shape as you scroll.
-        </span>
         <a className="journey-skip" href="#work">
           Explore the work ↓
         </a>

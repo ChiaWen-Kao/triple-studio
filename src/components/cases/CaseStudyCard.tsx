@@ -90,7 +90,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
             aria-pressed={paused}
             onClick={toggle}
           >
-            {paused ? 'Play' : 'Pause'}
+            <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
           </button>
         </div>
       </div>

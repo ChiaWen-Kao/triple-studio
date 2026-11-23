@@ -1,0 +1,321 @@
+.project-detail {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: var(--paper);
+  background: var(--ink);
+}
+.project-detail::backdrop {
+  background: transparent;
+}
+.project-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  pointer-events: none;
+}
+.project-brand {
+  font-size: 2rem;
+  font-weight: 750;
+  letter-spacing: -0.065em;
+  color: var(--yellow);
+}
+.project-brand small {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+}
+.project-back,
+.project-explore {
+  border: 0;
+  border-radius: 2rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.8rem;
+  pointer-events: auto;
+}
+.project-back {
+  position: absolute;
+  left: 53%;
+}
+.project-back span {
+  margin-right: 0.5rem;
+}
+.project-header-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.project-rail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.project-rail::-webkit-scrollbar {
+  display: none;
+}
+.project-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 100%;
+  padding-left: 5vw;
+  gap: 5vw;
+}
+.project-introduction {
+  flex: 0 0 calc(48rem - 10vw);
+}
+.project-introduction-content {
+  width: 34rem;
+  max-width: 100%;
+}
+.project-introduction h2 {
+  font-size: 4.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  max-width: none;
+  margin-bottom: 3rem;
+}
+.project-summary {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 4rem;
+  row-gap: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.project-summary dl {
+  margin: 0;
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+.project-summary dt {
+  color: var(--yellow);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+.project-summary dd {
+  margin: 0 0 3rem;
+}
+.project-explore {
+  margin-top: 2rem;
+  grid-column: 1;
+  justify-self: start;
+  align-self: start;
+}
+.project-explore span {
+  margin-left: 1rem;
+}
+.project-hero-media {
+  position: relative;
+  flex: none;
+  height: calc(100dvh - 16.5rem);
+  aspect-ratio: 16 / 9;
+  border-radius: 1.2rem;
+  overflow: hidden;
+}
+.project-hero-media > .case-visual {
+  height: 100%;
+  min-height: 0;
+}
+.project-hero-media .visual-corner,
+.project-hero-media .visual-caption {
+  display: none;
+}
+.project-story-panel {
+  flex: none;
+  width: min(90vw, 96rem);
+  height: calc(100dvh - 16.5rem);
+}
+.project-story-panel .case-study {
+  min-height: 0;
+  height: 100%;
+  color: var(--ink);
+}
+.project-story-panel .case-visual {
+  min-height: 0;
+  height: 100%;
+}
+.project-story-panel .case-copy {
+  padding: 2rem;
+  gap: 1.25rem;
+  overflow-y: auto;
+}
+.project-story-panel .case-copy h3 {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+}
+.project-next {
+  position: relative;
+  align-self: stretch;
+  width: 53vw;
+  min-width: 18rem;
+  flex: none;
+  overflow: hidden;
+  border: 0;
+  text-align: left;
+  padding: 4rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+.project-next-preview {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  transition: opacity 0.6s;
+}
+.project-next-preview .case-visual {
+  height: 100%;
+}
+.project-next-preview .visual-corner,
+.project-next-preview .visual-caption {
+  display: none;
+}
+.project-next-title {
+  position: relative;
+  display: block;
+  width: 34rem;
+  font-size: 4.5rem;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+.project-next-label {
+  position: absolute;
+  left: 4rem;
+  right: 2rem;
+  bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.project-next-line {
+  height: 2px;
+  flex: 1;
+  background: currentColor;
+  transform: scaleX(var(--next-progress, 0));
+  transform-origin: left;
+  transition: none;
+}
+.project-next:is(:hover, :focus-visible) .project-next-preview {
+  opacity: 0.4;
+}
+.project-scroll-cue {
+  position: absolute;
+  right: 5vw;
+  bottom: 3rem;
+  font-size: 0.7rem;
+  color: var(--yellow);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.project-scroll-cue span {
+  margin-left: 0.5rem;
+}
+@media (min-width: 768px) and (max-height: 700px) {
+  .project-hero-media,
+  .project-story-panel {
+    height: calc(100dvh - 10rem);
+  }
+  .project-introduction {
+    padding-top: 4rem;
+  }
+  .project-introduction h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  .project-summary dd {
+    margin-bottom: 1.5rem;
+  }
+  .project-scroll-cue {
+    bottom: 1.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-next-line,
+  .project-next-preview {
+    transition: none;
+  }
+}
+
+.project-detail .case-visual {
+  color: var(--ink);
+}
+
+.project-next-line {
+  position: relative;
+}
+.project-next-label::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  left: 7rem;
+  right: 2rem;
+  background: currentColor;
+  opacity: 0.2;
+}
+
+@media (min-width: 768px) and (min-height: 701px) {
+  .project-introduction-content {
+    min-height: 28rem;
+  }
+  .project-hero-media,
+  .project-story-panel {
+    margin-top: 1.625rem;
+  }
+}
+.project-header-label {
+  color: var(--ink);
+  background: var(--paper);
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+.project-back {
+  box-shadow: 0 0 0 1px #0002;
+}
+.project-rail[data-at-end='true'] ~ .project-scroll-cue {
+  opacity: 0;
+}
+
+.project-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 4rem;
+  background: var(--paper);
+  color: var(--ink);
+  pointer-events: none;
+}
+.project-detail[data-transitioning='true'] .project-rail {
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .project-transition {
+    padding: 3rem 15px 6rem;
+  }
+}

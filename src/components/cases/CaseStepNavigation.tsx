@@ -9,9 +9,6 @@ export function CaseStepNavigation({
 }) {
   return (
     <div className="case-step-navigation">
-      <span className="case-swipe-hint">
-        Swipe to explore <span aria-hidden="true">↔</span>
-      </span>
       <div className="case-step-buttons">
         <button
           type="button"
