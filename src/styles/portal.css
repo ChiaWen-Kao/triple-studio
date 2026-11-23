@@ -1,0 +1,82 @@
+.studio-portal {
+  background: #111114;
+  color: white;
+}
+.portal-stage {
+  min-height: 100svh;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.portal-frame {
+  position: absolute;
+  inset: 0;
+  background: #111114;
+  overflow: hidden;
+  z-index: -1;
+}
+.portal-frame canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.portal-intro,
+.portal-outro {
+  padding: 10svh var(--page-gutter);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.portal-intro {
+  pointer-events: none;
+}
+.portal-intro h2,
+.portal-outro h2 {
+  max-width: none;
+  font-size: clamp(3rem, 9vw, 10rem);
+  letter-spacing: -0.065em;
+  line-height: 1;
+}
+.portal-outro {
+  opacity: 0;
+  visibility: hidden;
+}
+.portal-unavailable .portal-intro {
+  display: none;
+}
+.portal-unavailable .portal-outro {
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-stage {
+    min-height: 38rem;
+  }
+  .portal-frame,
+  .portal-intro {
+    display: none;
+  }
+  .portal-outro {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    padding: 6rem 1.5rem;
+  }
+  .portal-outro h2 {
+    font-size: clamp(3.5rem, 12vw, 7rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .studio-portal {
+    min-height: 400svh;
+  }
+  .portal-unavailable {
+    min-height: 100svh;
+  }
+}

@@ -1,0 +1,105 @@
+.product-composition {
+  position: relative;
+  width: 100%;
+  height: 27rem;
+  perspective: 900px;
+}
+.product-device {
+  position: absolute;
+  width: 13rem;
+  height: 25rem;
+  background: #f8f8f4;
+  border: 6px solid #171719;
+  border-radius: 2rem;
+  left: calc(50% - 6.5rem);
+  top: 1rem;
+  padding: 2.8rem 1rem 1rem;
+  box-shadow: 1.6rem 2rem 3rem #70500c30;
+  transform: rotate(-12deg) rotateY(-18deg) scale(0.82);
+  transition: transform 1.2s var(--motion-ease);
+}
+.device-camera {
+  position: absolute;
+  width: 4rem;
+  height: 0.7rem;
+  background: #171719;
+  border-radius: 2rem;
+  top: 0.8rem;
+  left: calc(50% - 2rem);
+}
+.device-greeting {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+.device-flower {
+  font-size: 8rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--red);
+}
+.device-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.device-row i {
+  height: 0.4rem;
+  width: 30%;
+  background: #d9d9d2;
+  border-radius: 1rem;
+}
+.device-action {
+  background: var(--ink);
+  color: white;
+  padding: 0.6rem;
+  text-align: center;
+  margin-top: 1.3rem;
+  font-size: 0.7rem;
+  border-radius: 2rem;
+}
+.idea-note,
+.feedback-note {
+  position: absolute;
+  padding: 1rem;
+  box-shadow: 0.4rem 0.6rem 1rem #0001;
+  z-index: 2;
+  background: #f8f8f4;
+  transition:
+    transform 1s var(--motion-ease),
+    opacity 0.6s;
+  font-size: 0.9rem;
+}
+.note-one {
+  left: 8%;
+  top: 20%;
+  transform: rotate(-16deg);
+}
+.note-two {
+  right: 8%;
+  top: 60%;
+  transform: rotate(12deg);
+}
+.feedback-note {
+  left: 8%;
+  bottom: 15%;
+  background: var(--red);
+  color: white;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.phase-1 .product-device {
+  transform: rotate(5deg) rotateY(0) scale(1);
+}
+.phase-1 .idea-note,
+.phase-2 .idea-note {
+  opacity: 0;
+  transform: translateY(-80px) rotate(-15deg);
+}
+.phase-2 .product-device {
+  transform: rotate(-5deg) rotateY(15deg) scale(0.95);
+}
+.phase-2 .feedback-note {
+  opacity: 1;
+  transform: translateY(0) rotate(-8deg);
+}

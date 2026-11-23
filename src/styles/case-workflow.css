@@ -1,0 +1,91 @@
+.visual-operations {
+  background: #d9e1dc;
+}
+.workflow-composition {
+  width: 100%;
+  max-width: 38rem;
+  aspect-ratio: 5/4;
+  position: relative;
+}
+.workflow-composition svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.workflow-path {
+  stroke: #244d3a;
+  stroke-width: 3;
+  stroke-dasharray: 8 8;
+  fill: none;
+  opacity: 0.25;
+  transition: opacity 1s;
+}
+.workflow-node {
+  position: absolute;
+  background: #f8f8f4;
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 2rem #14352015;
+  padding: 1rem;
+  min-width: 7rem;
+  font-size: 0.85rem;
+  transition:
+    transform 1s var(--motion-ease),
+    background 1s;
+}
+.workflow-node > span {
+  display: block;
+  font-size: 2rem;
+}
+.node-in {
+  left: 8%;
+  top: 8%;
+  transform: rotate(-15deg);
+}
+.node-center {
+  top: 36%;
+  left: 35%;
+  background: #244d3a;
+  color: white;
+  transform: rotate(12deg);
+}
+.node-out {
+  bottom: 3%;
+  right: 6%;
+  transform: rotate(-8deg);
+}
+.phase-1 .workflow-node,
+.phase-2 .workflow-node {
+  transform: rotate(0);
+}
+.phase-1 .workflow-path,
+.phase-2 .workflow-path {
+  opacity: 1;
+}
+.workflow-packet {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--red);
+  left: 20%;
+  top: 25%;
+  opacity: 0;
+}
+.phase-1 .workflow-packet {
+  opacity: 1;
+  animation: packet-travel 3s infinite var(--motion-ease);
+}
+.phase-2 .node-center {
+  background: var(--red);
+}
+@keyframes packet-travel {
+  50% {
+    left: 48%;
+    top: 50%;
+  }
+  100% {
+    left: 80%;
+    top: 75%;
+  }
+}

@@ -1,0 +1,130 @@
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.studio-intro {
+  padding-top: clamp(6rem, 13vw, 13rem);
+  padding-bottom: clamp(6rem, 13vw, 13rem);
+}
+.studio-intro h2 {
+  font-size: clamp(3.2rem, 8.4vw, 9rem);
+  max-width: none;
+  letter-spacing: -0.07em;
+  line-height: 1.08;
+}
+.intro-line {
+  display: block;
+  overflow: hidden;
+}
+.intro-line:first-child {
+  padding-left: 14%;
+}
+.intro-line > span {
+  display: block;
+}
+.intro-description {
+  max-width: 32rem;
+  margin: 3rem 0 0 auto;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+.idea-journey {
+  margin: 0 var(--page-gutter);
+}
+.journey-stage {
+  min-height: 100svh;
+  position: relative;
+  background: var(--yellow);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 5rem 6%;
+}
+.journey-art {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.journey-orbit {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 1;
+}
+.journey-piece {
+  position: absolute;
+  inset: 15% 40%;
+  border-radius: 100%;
+  background: var(--red);
+  transform: rotate(calc(var(--piece) * 30deg)) translateY(-38%);
+  transform-origin: 50% 50%;
+  box-shadow: inset -10px -6px 20px #78060035;
+}
+.journey-chapters {
+  position: relative;
+  min-height: 25rem;
+}
+.journey-chapter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.journey-chapter h2 {
+  font-size: clamp(3rem, 5.5vw, 6rem);
+  line-height: 1.02;
+  max-width: 12ch;
+  letter-spacing: -0.065em;
+}
+.journey-chapter p:last-child {
+  max-width: 28ch;
+  font-size: 1.15rem;
+}
+.journey-footnote {
+  position: absolute;
+  bottom: 2rem;
+  left: 6%;
+  font-size: 0.8rem;
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .journey-chapter-1,
+  .journey-chapter-2 {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .journey-stage {
+    display: block;
+    padding: 3rem 1.5rem;
+  }
+  .journey-art {
+    max-width: 22rem;
+    margin: auto;
+  }
+  .journey-chapter {
+    position: relative;
+    padding: 2rem 0;
+  }
+  .journey-chapter + .journey-chapter {
+    border-top: 1px solid #0003;
+  }
+  .journey-chapter h2 {
+    font-size: 3rem;
+    max-width: 16ch;
+  }
+  .journey-footnote {
+    display: none;
+  }
+  .intro-line:first-child {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .idea-journey {
+    min-height: 300svh;
+  }
+}

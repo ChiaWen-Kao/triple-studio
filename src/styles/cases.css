@@ -1,0 +1,184 @@
+.case-studies {
+  max-width: 112rem;
+}
+.work-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.work-heading h2 {
+  font-size: clamp(4rem, 9vw, 10rem);
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+  margin: 0;
+}
+.work-heading > p {
+  max-width: 24rem;
+}
+.case-list {
+  display: grid;
+  gap: 3rem;
+}
+.case-study {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 40rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: #eeeee8;
+}
+.case-copy {
+  padding: clamp(1.5rem, 3.5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.case-copy h3 {
+  font-size: clamp(2.5rem, 3.5vw, 4.4rem);
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  max-width: 12ch;
+}
+.case-placeholder {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #0003;
+  border-radius: 2rem;
+}
+.case-slide {
+  animation: case-enter 0.6s var(--motion-ease) both;
+  min-height: 10rem;
+}
+.case-slide .eyebrow {
+  margin-bottom: 1rem;
+}
+.case-slide h4 {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  margin: 0 0 0.8rem;
+}
+.case-slide > p:last-child {
+  color: #575750;
+  max-width: 35ch;
+  margin-bottom: 0;
+}
+.case-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.case-tabs {
+  display: flex;
+  flex: 1;
+  gap: 0.6rem;
+}
+.case-tabs button {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  padding: 0.5rem 0;
+  min-height: 2.75rem;
+  text-align: left;
+  font-size: 0.7rem;
+  background: transparent;
+  border: 0;
+  border-top: 2px solid #0003;
+  cursor: pointer;
+}
+.case-tabs button[aria-pressed='true'] {
+  border-color: var(--ink);
+  font-weight: 700;
+}
+.case-tabs i {
+  position: absolute;
+  height: 2px;
+  background: var(--red);
+  top: -2px;
+  left: 0;
+  width: 0;
+}
+.case-tabs i.is-running {
+  animation: case-progress var(--interval) linear forwards;
+}
+.case-play {
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  font-size: 0.8rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+.case-visual {
+  position: relative;
+  min-height: 40rem;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--yellow);
+}
+.visual-corner,
+.visual-caption {
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  font-size: 0.75rem;
+  z-index: 3;
+}
+.visual-corner {
+  top: 2rem;
+  letter-spacing: 0.08em;
+}
+.visual-caption {
+  bottom: 2rem;
+}
+@keyframes case-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes case-progress {
+  to {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .work-heading {
+    display: block;
+  }
+  .work-heading > p {
+    margin-top: 2rem;
+  }
+  .case-study {
+    grid-template-columns: 1fr;
+  }
+  .case-visual {
+    min-height: 32rem;
+  }
+  .case-slide {
+    min-height: 9rem;
+  }
+  .case-copy {
+    gap: 2rem;
+  }
+  .case-copy h3 {
+    max-width: 17ch;
+  }
+  .case-tabs button {
+    font-size: 0.65rem;
+  }
+  .case-list {
+    gap: 2rem;
+  }
+}

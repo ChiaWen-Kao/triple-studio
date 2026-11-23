@@ -1,0 +1,100 @@
+.visual-experience {
+  background: #d7d0e1;
+}
+.web-composition {
+  width: 84%;
+  perspective: 900px;
+}
+.web-window {
+  background: #f8f8f4;
+  border-radius: 0.7rem;
+  border: 1px solid #171719;
+  overflow: hidden;
+  box-shadow: 1rem 1.5rem 3rem #30204025;
+  transform: rotate(-10deg) rotateY(20deg) scale(0.9);
+  transition: transform 1.2s var(--motion-ease);
+}
+.web-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-bottom: 1px solid #171719;
+  padding: 0.7rem;
+}
+.web-toolbar i {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #171719;
+}
+.web-toolbar span {
+  margin-left: auto;
+  font-size: 0.6rem;
+}
+.web-layout {
+  padding: 1.5rem;
+  position: relative;
+  min-height: 19rem;
+  overflow: hidden;
+}
+.web-kicker {
+  font-size: 0.6rem;
+}
+.web-layout strong {
+  display: block;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.web-sculpture {
+  color: #ef3d24;
+  font-size: 14rem;
+  position: absolute;
+  right: -2rem;
+  bottom: -2rem;
+  line-height: 1;
+  transform: rotate(35deg);
+  transition: transform 1.2s;
+}
+.web-action {
+  display: inline-block;
+  margin-top: 3rem;
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.65rem;
+  background: var(--ink);
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+.phase-1 .web-window {
+  transform: rotate(0) rotateY(0) scale(1);
+}
+.phase-1 .web-sculpture {
+  transform: rotate(90deg);
+}
+.phase-2 .web-window {
+  transform: rotate(5deg) rotateY(-10deg) scale(0.95);
+}
+.web-feedback {
+  position: absolute;
+  bottom: 16%;
+  right: 8%;
+  background: #492c68;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
+  transform: translateY(30px);
+}
+.phase-2 .web-feedback {
+  opacity: 1;
+  transform: translateY(0);
+}

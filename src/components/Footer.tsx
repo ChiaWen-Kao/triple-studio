@@ -1,16 +1,18 @@
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <a className="wordmark" href="#top" aria-label="triple home">
-        <span className="wordmark-name">
-          triple
-          <span className="wordmark-dot" aria-hidden="true">
-            .
-          </span>
-        </span>
+    <footer className="studio-footer">
+      <a
+        className="footer-wordmark"
+        href="#top"
+        aria-label="Wendava Studio home"
+      >
+        wendava<span>studio</span>
       </a>
-      <p>Australian digital studio · Website / Web App / Mobile App</p>
-      <a href="#top">Back to top</a>
+      <div className="footer-bottom">
+        <span>© {new Date().getFullYear()} Wendava Studio</span>
+        <span>Creative thinking. Real-world solutions.</span>
+        <a href="#top">Back to top</a>
+      </div>
     </footer>
   );
 }

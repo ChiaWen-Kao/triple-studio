@@ -1,56 +1,43 @@
+const people = [
+  { name: 'Wen Kao', role: 'Product Designer', initials: 'WK' },
+  { name: 'Peter Wei', role: 'PM & Full-Stack Engineer', initials: 'PW' },
+  { name: 'Daniel Wang', role: 'Full-Stack Engineer', initials: 'DW' },
+];
 export function Team() {
   return (
-    <section id="team" className="section team" aria-labelledby="team-heading">
-      <div className="section-heading team-heading">
-        <h2 id="team-heading" className="section-title">
-          People who make it happen
+    <section
+      id="studio"
+      className="section studio-team"
+      aria-labelledby="team-heading"
+    >
+      <div className="team-intro">
+        <p className="eyebrow">The people behind the thinking</p>
+        <h2 id="team-heading">
+          Different skills.
+          <br />
+          Shared curiosity.
         </h2>
         <p>
-          Strategy, design and development stay connected from the first
-          conversation to launch.
+          Design, business thinking and development.
+          <br />
+          Working together from the first conversation.
         </p>
       </div>
-
-      <div className="team-grid">
-        <article className="team-member">
-          <div
-            className="portrait-placeholder"
-            role="img"
-            aria-label="Portrait placeholder for team member two"
-          >
-            <span>Portrait placeholder</span>
-          </div>
-          <div>
-            <h3>Peter Wei</h3>
-            <p className="team-role">PM &amp; Full-Stack Engineer</p>
-          </div>
-        </article>
-        <article className="team-member">
-          <div
-            className="portrait-placeholder"
-            role="img"
-            aria-label="Portrait placeholder for team member three"
-          >
-            <span>Portrait placeholder</span>
-          </div>
-          <div>
-            <h3>Daniel Wang</h3>
-            <p className="team-role">Full-Stack Engineer</p>
-          </div>
-        </article>
-        <article className="team-member">
-          <div
-            className="portrait-placeholder"
-            role="img"
-            aria-label="Portrait placeholder for team member one"
-          >
-            <span>Portrait placeholder</span>
-          </div>
-          <div>
-            <h3>Wen Kao</h3>
-            <p className="team-role">Product Designer</p>
-          </div>
-        </article>
+      <div className="people-grid">
+        {people.map((person) => (
+          <article className="person" key={person.name}>
+            <div
+              className="person-placeholder"
+              role="img"
+              aria-label={`Portrait placeholder for ${person.name}`}
+            >
+              <span aria-hidden="true">{person.initials}</span>
+              <small>Portrait coming soon</small>
+            </div>
+            <h3>{person.name}</h3>
+            <p>{person.role}</p>
+          </article>
+        ))}
       </div>
     </section>
   );

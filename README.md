@@ -1,6 +1,6 @@
-# triple. studio
+# Wendava Studio
 
-Responsive studio landing page built with React, TypeScript and Vite. The migration preserves the original page copy, CSS illustrations, layout, service modes, sticky card stack and responsive navigation.
+An English studio website built with React, TypeScript, Vite, GSAP and Three.js. The site introduces practical product, website and workflow services through concise copy, interactive scenes and three reserved case studies.
 
 ## Development
 
@@ -21,40 +21,44 @@ npm run build
 npm run preview
 ```
 
-The production output is `dist/`. The preview server serves it at http://127.0.0.1:4173/triple-studio/.
+`npm run format:write` formats the source. The production output is `dist/`; preview serves it at http://127.0.0.1:4173/triple-studio/.
 
 ## Structure
 
-- `src/components/` — page sections and service illustrations
-- `src/hooks/` — navigation-independent interaction and form lifecycle logic
-- `src/constants/` — service copy and contact configuration
-- `src/api/contact.ts` — FormSubmit request and timeout handling
-- `src/utils/serviceStack.ts` — card measurement and scroll opacity
-- `src/styles/` — original CSS grouped by responsibility, with the original cascade order
-- `.github/workflows/` — pull request validation and GitHub Pages publication
+- `src/components/motion/` — hero, scroll chapters and the spatial transition
+- `src/graphics/` — procedural connector geometry and Three.js scene lifecycles
+- `src/components/cases/` — coordinated text and visual case-study chapters
+- `src/hooks/useCaseCarousel.ts` — visibility, playback and chapter timing
+- `src/constants/cases.ts` — three case studies and their chapter content
+- `src/constants/questions.json` — shared visible questions and search content
+- `src/api/contact.ts` and `src/hooks/useContactForm.ts` — contact request lifecycle
+- `src/styles/` — shared tokens and feature-specific styles
+- `scripts/build-search-content.mjs` — static introductory content, structured data and sitemap
 
-An invisible, inert copy of the whole-project cards measures their natural height without changing the live React content. Both service modes use this height, matching the original stack. It is excluded from focus and the accessibility tree.
+## Motion and accessibility
 
-## GitHub Pages
+The hero uses locally modelled connectors, with pointer response and a pause control. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
 
-The Vite base path is `/triple-studio/`. Publication uses the built `dist/` artifact; the source files cannot be served directly as a static React application.
+Case studies advance every 6.5 seconds only while visible. Text and animation share one chapter index. Hover and keyboard focus pause advancement; manual chapter selection pauses until Play is requested. Reduced motion disables autoplay and pinned scene transitions, retaining the information and manual controls. The narrow layout stacks the case text above its visual and presents the three process chapters in reading order.
 
-A repository administrator or maintainer must enable **Settings → Pages → Build and deployment → Source: GitHub Actions**. This is a private repository, so its owner's plan must support Pages for private repositories. Publishing the site does not require making the source repository public.
+The visual direction follows the inspected reference's floating objects, text reveals and spatial scroll transitions with Wendava's own palette, geometry and content. Reference-site media and client work are not included.
 
-After review and merge into `main`, the **Deploy GitHub Pages** workflow validates, builds and publishes the site. Pull requests only run CI and never publish. The workflow can also be rerun manually on `main`. No personal access token or hosting secret is required.
+## Content and search
 
-The expected address after a successful deployment is https://chiawen-kao.github.io/triple-studio/. Check the deployment job's URL and verify assets, anchors, navigation and the contact flow there before announcing the site. To roll back, revert the relevant change on `main` and let the workflow rebuild the previous version.
+The three case studies are explicitly marked as placeholders. Replace the reserved challenge, outcome and learning text in `src/constants/cases.ts` with approved project information. Team names and roles come from the original site; portraits remain placeholders. Do not add unverified customer claims or performance metrics.
+
+The build adds a readable HTML introduction and questions before the interactive application loads. FAQ structured data and visible answers use the same content file. Organization, website and service data, canonical metadata, social descriptions and `sitemap.xml` use the GitHub Pages URL. Update the canonical URLs in `index.html` and the build script together when changing the domain. Structured data does not guarantee inclusion or enhanced display in search results.
 
 ## Contact form
 
-Requests are addressed to `kaiwang2027@gmail.com` through FormSubmit. The action identifier in `src/constants/contact.ts` is a public submission address, not a secret. The `email` field supplies the visitor's reply address. Never put SMTP credentials in this client application.
+The original FormSubmit integration and recipient, `kaiwang2027@gmail.com`, are retained. The form validates required fields, blocks duplicate submissions, preserves entries on failure and resets only after the service confirms acceptance. It times out after 20 seconds and does not retry automatically. Automated tests mock requests and do not send mail.
 
-The form validates required fields, disables controls while sending, prevents duplicate requests, preserves entries on failure and resets them only after the service confirms success. Requests time out after 20 seconds and are not retried automatically. A timeout can happen after a request was accepted. A hidden honeypot provides basic bot filtering.
+Delivery through FormSubmit remains unverified: the original integration previously returned activation-required responses. A successful request is not proof of inbox delivery. Keep the direct email link available. Before relying on form delivery, check an authorised test from the published URL, activation status, inbox arrival, fields and Reply-To. A chat request does not confirm a meeting time.
 
-**Delivery limitation:** earlier local tests continued to receive an activation-required response after activation. Activation released queued mail, but stable subsequent delivery remains unverified. The migration preserves this integration and its failure feedback; it does not resolve that external delivery problem. Visitors can use the direct email link.
+## Publication and recovery
 
-Before treating the form as ready, submit a clearly labelled test from the published URL, complete activation if requested, then confirm a second request succeeds without another activation and arrives with all four fields and the correct Reply-To. Also check Spam. HTTP 200 alone is not delivery confirmation. Automated tests mock the service and do not send mail.
+The Vite base path remains `/triple-studio/`. The existing **Deploy GitHub Pages** workflow checks formatting, lint, tests and the build, then publishes `dist/` on pushes to `main`. Pull requests validate without publishing.
 
-## Design scope
+Live site: https://chiawen-kao.github.io/triple-studio/.
 
-The hero canvas and team portraits retain the original placeholders. Pricing remains scope-based. A chat request does not confirm a meeting time. New artwork, copy changes and replacing the form provider are outside this framework migration.
+Verify the deployed revision and the actual page after publication, including local assets, navigation, chapter controls and contact feedback. To recover from a release regression, revert the relevant commit on `main` and allow the existing workflow to republish. Never force-push to roll back shared history.

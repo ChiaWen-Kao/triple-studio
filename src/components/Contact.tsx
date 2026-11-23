@@ -9,6 +9,8 @@ const projectOptions = [
   { value: 'web-app', label: 'Web App' },
   { value: 'mobile-app', label: 'Mobile App' },
   { value: 'website', label: 'Website' },
+  { value: 'workflow', label: 'Business workflow' },
+  { value: 'explore', label: 'Not sure yet' },
 ];
 
 export function Contact() {
