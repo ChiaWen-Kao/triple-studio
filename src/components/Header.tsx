@@ -9,16 +9,20 @@ const links = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    const close = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-        buttonRef.current?.focus();
-      }
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
     };
-    window.addEventListener('keydown', close);
-    return () => window.removeEventListener('keydown', close);
-  }, []);
+  }, [isOpen]);
+  const openNavigation = () => {
+    dialogRef.current?.showModal();
+    setIsOpen(true);
+  };
+  const closeNavigation = () => dialogRef.current?.close();
   return (
     <header className="studio-header">
       <a
@@ -34,32 +38,62 @@ export function Header() {
         </a>
         <button
           ref={buttonRef}
-          className="pill"
+          className="pill menu-toggle"
           type="button"
-          aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
+          aria-label="Open navigation"
           aria-expanded={isOpen}
           aria-controls="studio-navigation"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={openNavigation}
         >
-          {isOpen ? 'Close' : 'Menu'}{' '}
-          <span aria-hidden="true">{isOpen ? '×' : '••'}</span>
+          <span className="menu-label">Menu</span>
+          <span aria-hidden="true">••</span>
         </button>
       </div>
-      <nav
+      <dialog
+        ref={dialogRef}
         id="studio-navigation"
-        className="studio-navigation"
-        hidden={!isOpen}
+        className="navigation-dialog"
         aria-label="Main navigation"
+        onClose={() => {
+          setIsOpen(false);
+          buttonRef.current?.focus();
+        }}
       >
-        {links.map(({ id, label }) => (
-          <a key={id} href={`#${id}`} onClick={() => setIsOpen(false)}>
-            {label}
-          </a>
-        ))}
-        <a href="#contact" onClick={() => setIsOpen(false)}>
-          Start a conversation
+        <div className="navigation-top">
+          <span className="studio-wordmark">
+            wendava<small>STUDIO</small>
+          </span>
+          <button
+            className="pill menu-toggle"
+            aria-label="Close navigation"
+            onClick={closeNavigation}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <nav className="studio-navigation" aria-label="Main navigation">
+          {links.map(({ id, label }, index) => (
+            <a key={id} href={`#${id}`} onClick={closeNavigation}>
+              <small>0{index + 1}</small>
+              {label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </nav>
+        <a
+          className="navigation-contact"
+          href="#contact"
+          onClick={closeNavigation}
+        >
+          Have a “what if”?
+          <strong>
+            Let’s talk <span aria-hidden="true">↗</span>
+          </strong>
         </a>
-      </nav>
+        <p className="navigation-note">
+          Creative thinking. Real-world solutions.
+        </p>
+      </dialog>
     </header>
   );
 }

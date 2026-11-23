@@ -125,4 +125,41 @@ describe('case study chapters', () => {
     advance();
     expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
   });
+  it('supports next and previous buttons with wrapping and synchronized media', () => {
+    render(<CaseStudyCard study={caseStudies[0]} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Previous chapter' }));
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '2');
+    fireEvent.click(screen.getByRole('button', { name: 'Next chapter' }));
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '0');
+    advance();
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '0');
+  });
+  it('clears drag feedback when a browser gesture cancels the pointer', () => {
+    render(<CaseStudyCard study={caseStudies[0]} />);
+    const card = screen.getByRole('article');
+    for (const [type, x] of [
+      ['pointerdown', 260],
+      ['pointermove', 120],
+    ] as const) {
+      fireEvent(
+        card,
+        new MouseEvent(type, { bubbles: true, clientX: x, clientY: 200 }),
+      );
+    }
+    expect(card).toHaveAttribute('data-dragging', 'true');
+    fireEvent.pointerCancel(card);
+    expect(card).toHaveAttribute('data-dragging', 'false');
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '0');
+  });
+  it('resumes autoplay when Play is explicitly requested from a focused control', () => {
+    render(<CaseStudyCard study={caseStudies[0]} />);
+    fireEvent.click(screen.getByRole('button', { name: 'The outcome' }));
+    const play = screen.getByRole('button', {
+      name: 'Play An idea people can use.',
+    });
+    fireEvent.focus(play);
+    fireEvent.click(play);
+    advance();
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '2');
+  });
 });

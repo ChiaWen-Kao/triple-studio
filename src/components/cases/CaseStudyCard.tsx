@@ -3,6 +3,7 @@ import type { CaseStudy } from '../../types/cases';
 import { CASE_INTERVAL_MS } from '../../constants/cases';
 import { useCaseCarousel } from '../../hooks/useCaseCarousel';
 import { useSwipeChapters } from '../../hooks/useSwipeChapters';
+import { CaseStepNavigation } from './CaseStepNavigation';
 import { CaseVisual } from './CaseVisual';
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -17,13 +18,15 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
     toggle,
   } = useCaseCarousel(study.phases.length);
   const phase = study.phases[index];
-  const swipe = useSwipeChapters((direction) =>
-    select((index + direction + study.phases.length) % study.phases.length),
-  );
+  const step = (direction: number) =>
+    select((index + direction + study.phases.length) % study.phases.length);
+  const { handlers, offset } = useSwipeChapters(step);
   return (
     <article
       ref={elementRef}
-      {...swipe}
+      {...handlers}
+      style={{ '--swipe-offset': `${offset}px` } as CSSProperties}
+      data-dragging={offset !== 0}
       className={`case-study case-${study.theme}`}
       aria-labelledby={`${study.id}-title`}
       aria-roledescription="carousel"
@@ -92,6 +95,11 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         </div>
       </div>
       <CaseVisual study={study} phase={index} />
+      <CaseStepNavigation
+        index={index}
+        count={study.phases.length}
+        onStep={step}
+      />
     </article>
   );
 }

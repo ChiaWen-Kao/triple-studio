@@ -167,3 +167,113 @@
 .scroll-reveal-piece {
   display: inline-block;
 }
+
+.journey-progress {
+  position: absolute;
+  top: 6rem;
+  left: 6%;
+  right: 6%;
+}
+.journey-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.journey-progress-labels span {
+  opacity: 0.45;
+}
+.journey-progress-labels [aria-current='step'] {
+  opacity: 1;
+}
+.journey-progress-track {
+  height: 2px;
+  margin-top: 0.75rem;
+  background: #0002;
+}
+.journey-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.journey-skip {
+  position: absolute;
+  right: 6%;
+  bottom: 1.1rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  text-underline-offset: 0.3rem;
+}
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .idea-journey {
+    min-height: 240svh;
+  }
+  .journey-stage {
+    grid-template-rows: 48% 1fr;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+  }
+  .journey-orbit {
+    width: min(65vw, 33svh);
+  }
+  .journey-chapter h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+  .journey-footnote {
+    display: none;
+  }
+  .journey-skip {
+    left: 6%;
+    right: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-progress,
+  .journey-skip {
+    display: none;
+  }
+}
+
+@media (max-height: 600px) {
+  .idea-journey {
+    min-height: 0;
+  }
+  .journey-stage {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 2rem;
+  }
+  .journey-art {
+    display: none;
+  }
+  .journey-chapters {
+    height: auto;
+    min-height: 0;
+  }
+  .journey-chapter {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    padding: 2rem 0;
+  }
+  .journey-chapter + .journey-chapter {
+    border-top: 1px solid #0003;
+  }
+  .journey-chapter h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    max-width: 25ch;
+  }
+  .journey-chapter p:last-child {
+    max-width: 45ch;
+  }
+  .journey-progress,
+  .journey-footnote,
+  .journey-skip {
+    display: none;
+  }
+}

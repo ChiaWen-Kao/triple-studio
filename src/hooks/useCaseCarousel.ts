@@ -49,6 +49,9 @@ export function useCaseCarousel(count: number) {
     select,
     setHovered,
     setFocused,
-    toggle: () => setPaused((current) => !current),
+    toggle: () => {
+      setFocused(false);
+      setPaused((current) => !current);
+    },
   };
 }

@@ -80,3 +80,29 @@
     min-height: 100svh;
   }
 }
+
+.portal-skip {
+  position: absolute;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: white;
+  white-space: nowrap;
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  text-underline-offset: 0.3rem;
+}
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .studio-portal {
+    min-height: 250svh;
+  }
+  .portal-unavailable {
+    min-height: 100svh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-skip {
+    display: none;
+  }
+}

@@ -1,3 +1,18 @@
+.case-step-navigation {
+  display: none;
+}
+.case-study[data-dragging='true'] {
+  user-select: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .case-visual > div {
+    translate: var(--swipe-offset, 0) 0;
+    transition: translate 0.35s var(--motion-ease);
+  }
+  .case-study[data-dragging='true'] .case-visual > div {
+    transition: none;
+  }
+}
 .case-study {
   touch-action: pan-y;
 }
@@ -5,13 +20,14 @@
   .case-study {
     min-height: 0;
     gap: 1rem;
-    padding: 1.25rem;
+    padding: 0 0 1.25rem;
   }
   .case-copy {
     display: contents;
   }
   .case-heading {
-    grid-row: 1;
+    grid-row: 2;
+    padding: 0 1.25rem;
   }
   .case-heading .eyebrow {
     font-size: 0.65rem;
@@ -27,14 +43,15 @@
     font-size: 0.65rem;
   }
   .case-visual {
-    grid-row: 2;
+    grid-row: 1;
     min-height: 0;
-    height: clamp(13rem, 30svh, 17rem);
-    border-radius: 0.7rem;
+    height: clamp(17rem, 40svh, 23rem);
+    border-radius: 0;
   }
   .case-slide {
-    grid-row: 3;
+    grid-row: 4;
     min-height: 8rem;
+    padding: 0 1.25rem;
   }
   .case-slide .eyebrow {
     font-size: 0.7rem;
@@ -49,8 +66,9 @@
     line-height: 1.4;
   }
   .case-controls {
-    grid-row: 4;
+    grid-row: 3;
     gap: 0.5rem;
+    padding: 0 1.25rem;
   }
   .visual-corner {
     display: none;
@@ -71,7 +89,7 @@
   .product-composition {
     width: 175%;
     max-width: none;
-    transform: translate(-50%, -50%) scale(0.48);
+    transform: translate(-50%, -50%) scale(0.55);
   }
   .workflow-composition {
     width: 130%;
@@ -81,5 +99,42 @@
   .web-composition {
     width: 125%;
     transform: translate(-50%, -50%) scale(0.65);
+  }
+}
+
+@media (max-width: 767px) {
+  .case-step-navigation {
+    grid-row: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.25rem;
+    gap: 0.5rem;
+  }
+  .case-swipe-hint {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .case-step-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .case-step-buttons span {
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .case-step-buttons button {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  .case-step-buttons button:active {
+    background: var(--yellow);
+    transform: scale(0.94);
   }
 }

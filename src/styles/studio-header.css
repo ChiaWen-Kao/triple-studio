@@ -57,19 +57,3 @@
   background: var(--yellow);
   color: var(--ink);
 }
-.studio-navigation {
-  position: absolute;
-  top: 100%;
-  right: var(--page-gutter);
-  padding: 2rem;
-  width: min(28rem, calc(100vw - 2.5rem));
-  background: var(--yellow);
-  border-radius: 1rem;
-  box-shadow: 0 1rem 3rem #0002;
-}
-.studio-navigation a {
-  display: block;
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  text-decoration: none;
-  padding: 0.5rem 0;
-}

@@ -1,0 +1,111 @@
+.navigation-dialog {
+  position: fixed;
+  inset: 1rem 1rem auto auto;
+  margin: 0;
+  width: min(32rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 2rem;
+  border: 0;
+  border-radius: 1rem;
+  color: var(--ink);
+  background: var(--yellow);
+}
+.navigation-dialog[open] {
+  animation: menu-enter 0.4s var(--motion-ease) both;
+}
+.navigation-dialog::backdrop {
+  background: #05050570;
+  backdrop-filter: blur(6px);
+}
+.navigation-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.studio-navigation {
+  padding: 0 1.25rem;
+  border-radius: 1rem;
+  background: #f8f8f4;
+}
+.studio-navigation a {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.4rem 0;
+  font-size: 1.8rem;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+}
+.studio-navigation a + a {
+  border-top: 1px solid #0002;
+}
+.studio-navigation small {
+  font-size: 0.65rem;
+  letter-spacing: 0;
+}
+.studio-navigation a > span {
+  margin-left: auto;
+}
+.navigation-contact {
+  display: block;
+  background: var(--ink);
+  color: white;
+  margin-top: 0.75rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.navigation-contact strong {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+.navigation-note {
+  font-size: 0.8rem;
+  margin: 3rem 0 0;
+}
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .navigation-dialog {
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    padding: 1rem;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+  .navigation-top {
+    margin-bottom: 2.5rem;
+  }
+  .navigation-note {
+    position: static;
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .navigation-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .navigation-dialog > * {
+    flex-shrink: 0;
+  }
+}

@@ -25,6 +25,7 @@ export function IdeaScene() {
       {available && (
         <Suspense fallback={<SceneFallback />}>
           <Ballpit
+            style={{ position: 'absolute', inset: 0 }}
             count={90}
             colors={colors}
             material="satin"

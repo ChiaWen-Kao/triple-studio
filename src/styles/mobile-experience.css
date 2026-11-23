@@ -1,0 +1,93 @@
+@media (max-width: 767px) {
+  :root {
+    --page-gutter: 1rem;
+  }
+  html {
+    scroll-padding-top: 5rem;
+  }
+  .studio-header {
+    height: 4.5rem;
+    padding: 0.75rem 1rem;
+  }
+  .studio-wordmark {
+    font-size: 1.75rem;
+  }
+  .studio-wordmark small {
+    font-size: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .header-actions > a,
+  .menu-label {
+    display: none;
+  }
+  .menu-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+  }
+  .studio-hero {
+    padding: 0.5rem 1rem 0;
+    min-height: calc(100svh - 4.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-introduction {
+    display: block;
+    padding-bottom: 1rem;
+  }
+  #hero-heading {
+    font-size: clamp(1.8rem, 7.7vw, 3rem);
+    max-width: none;
+    line-height: 1.04;
+  }
+  .hero-introduction p {
+    display: none;
+  }
+  .idea-scene {
+    flex: 1;
+    height: auto;
+    min-height: 20rem;
+    border-radius: 0.75rem;
+  }
+  .scene-caption {
+    bottom: 5rem;
+    left: 1rem;
+    font-size: 0.75rem;
+  }
+  .scene-caption span:first-child {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  .scene-controls {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    justify-content: space-between;
+  }
+  .scene-stir,
+  .motion-toggle {
+    font-size: 0.7rem;
+    padding: 0.65rem 0.85rem;
+  }
+  .scene-baseline {
+    min-height: 2.75rem;
+    padding: 0;
+    font-size: 0.65rem;
+  }
+  .scene-baseline span:nth-child(2) {
+    display: none;
+  }
+  .studio-intro {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .studio-intro h2 {
+    font-size: clamp(3.5rem, 14vw, 6rem);
+  }
+  .intro-description {
+    margin-top: 2rem;
+  }
+}
