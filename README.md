@@ -37,11 +37,11 @@ npm run preview
 
 ## Motion and accessibility
 
-The hero uses locally modelled connectors, with pointer response and a pause control. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
+The hero embeds React Bits Ballpit with Wendava colors, physical collisions, drag-and-throw interaction, a keyboard-accessible impulse button and a pause control. React Bits Scroll Reveal provides the word-by-word introduction. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
 
-Case studies advance every 6.5 seconds only while visible. Text and animation share one chapter index. Hover and keyboard focus pause advancement; manual chapter selection pauses until Play is requested. Reduced motion disables autoplay and pinned scene transitions, retaining the information and manual controls. The narrow layout stacks the case text above its visual and presents the three process chapters in reading order.
+Case studies advance every 6.5 seconds only while visible. Text and animation share one chapter index. Hover and keyboard focus pause advancement; manual chapter selection pauses until Play is requested. Reduced motion disables autoplay and pinned scene transitions, retaining the information and manual controls. On phones, each case keeps its animation, chapter text and controls together in a compact card. Horizontal swipes select a chapter; vertical gestures remain page scrolling. The three process chapters retain their pinned, scroll-driven transitions on phones as well as desktops. Only reduced-motion preferences switch the process to a static reading layout.
 
-The visual direction follows the inspected reference's floating objects, text reveals and spatial scroll transitions with Wendava's own palette, geometry and content. Reference-site media and client work are not included.
+The visual direction follows the inspected reference's floating objects, text reveals and spatial scroll transitions with Wendava's own palette, geometry and content. Reference-site media and client work are not included. The reusable component sources, local adaptations and MIT + Commons Clause license are documented in `src/vendor/react-bits/SOURCES.md` and `LICENSE.md`. No additional runtime dependency is needed for the sourced components.
 
 ## Content and search
 

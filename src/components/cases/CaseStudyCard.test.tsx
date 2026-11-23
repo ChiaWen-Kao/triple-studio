@@ -7,8 +7,8 @@ let reducedMotion = false;
 beforeEach(() => {
   vi.useFakeTimers();
   reducedMotion = false;
-  vi.stubGlobal('matchMedia', () => ({
-    matches: reducedMotion,
+  vi.stubGlobal('matchMedia', (query: string) => ({
+    matches: query.includes('hover') || reducedMotion,
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
   }));
@@ -88,6 +88,41 @@ describe('case study chapters', () => {
     advance();
     expect(screen.getByRole('img')).toHaveAttribute('data-phase', '0');
     fireEvent.click(screen.getByRole('button', { name: 'The outcome' }));
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
+  });
+  it('swipes text and visual together without treating vertical scrolling as a chapter change', () => {
+    render(<CaseStudyCard study={caseStudies[0]} />);
+    const card = screen.getByRole('article');
+    const pointer = (type: string, x: number, y: number) => {
+      fireEvent(
+        card,
+        new MouseEvent(type, { bubbles: true, clientX: x, clientY: y }),
+      );
+    };
+    pointer('pointerdown', 260, 200);
+    pointer('pointerup', 80, 210);
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
+    expect(
+      screen.getByRole('heading', { name: 'Show what changed.' }),
+    ).toBeVisible();
+    advance();
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
+    pointer('pointerdown', 180, 200);
+    pointer('pointerup', 175, 420);
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
+    pointer('pointerdown', 80, 200);
+    pointer('pointerup', 260, 210);
+    expect(screen.getByRole('img')).toHaveAttribute('data-phase', '0');
+  });
+  it('does not stop autoplay after a synthetic hover on a touch-only device', () => {
+    vi.stubGlobal('matchMedia', () => ({
+      matches: false,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+    render(<CaseStudyCard study={caseStudies[0]} />);
+    fireEvent.mouseEnter(screen.getByRole('article'));
+    advance();
     expect(screen.getByRole('img')).toHaveAttribute('data-phase', '1');
   });
 });

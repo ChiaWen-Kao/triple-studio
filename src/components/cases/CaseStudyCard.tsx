@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { CaseStudy } from '../../types/cases';
 import { CASE_INTERVAL_MS } from '../../constants/cases';
 import { useCaseCarousel } from '../../hooks/useCaseCarousel';
+import { useSwipeChapters } from '../../hooks/useSwipeChapters';
 import { CaseVisual } from './CaseVisual';
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -16,13 +17,19 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
     toggle,
   } = useCaseCarousel(study.phases.length);
   const phase = study.phases[index];
+  const swipe = useSwipeChapters((direction) =>
+    select((index + direction + study.phases.length) % study.phases.length),
+  );
   return (
     <article
       ref={elementRef}
+      {...swipe}
       className={`case-study case-${study.theme}`}
       aria-labelledby={`${study.id}-title`}
       aria-roledescription="carousel"
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => {
+        if (window.matchMedia('(hover: hover)').matches) setHovered(true);
+      }}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
       onBlurCapture={(event) => {
@@ -31,7 +38,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
       }}
     >
       <div className="case-copy">
-        <div>
+        <div className="case-heading">
           <p className="eyebrow">{study.category}</p>
           <h3 id={`${study.id}-title`}>{study.title}</h3>
           <span className="case-placeholder">Case study coming soon</span>

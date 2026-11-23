@@ -1,80 +1,79 @@
-import { useEffect, useRef, useState } from 'react';
-import type { createIdeaScene } from '../../graphics/createIdeaScene';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+
+const Ballpit = lazy(() => import('../../vendor/react-bits/Ballpit'));
+const colors = ['#f7e7a8', '#ed2616', '#f8f8f4', '#e9be32'];
 
 export function IdeaScene() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [paused, setPaused] = useState(
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   );
   const [available, setAvailable] = useState(true);
-  const pausedRef = useRef(paused);
-  const sceneRef = useRef<ReturnType<typeof createIdeaScene> | null>(null);
+  const [burstSignal, setBurstSignal] = useState(0);
+  const handleUnavailable = useCallback(() => setAvailable(false), []);
   useEffect(() => {
-    if (!canvasRef.current) return;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let cancelled = false;
-    import('../../graphics/createIdeaScene')
-      .then(({ createIdeaScene }) => {
-        if (cancelled || !canvasRef.current) return;
-        sceneRef.current = createIdeaScene(
-          canvasRef.current,
-          pausedRef.current,
-        );
-      })
-      .catch(() => {
-        if (!cancelled) setAvailable(false);
-      });
-    const updatePreference = () => {
-      sceneRef.current?.setPaused(preference.matches);
-      pausedRef.current = preference.matches;
-      setPaused(preference.matches);
-    };
-    const updateScroll = () => {
-      const bounds = canvasRef.current?.getBoundingClientRect();
-      if (bounds)
-        sceneRef.current?.setProgress(Math.max(0, -bounds.top / bounds.height));
-    };
+    const updatePreference = () => setPaused(preference.matches);
     preference.addEventListener('change', updatePreference);
-    window.addEventListener('scroll', updateScroll, { passive: true });
-    return () => {
-      cancelled = true;
-      preference.removeEventListener('change', updatePreference);
-      window.removeEventListener('scroll', updateScroll);
-      sceneRef.current?.dispose();
-    };
+    return () => preference.removeEventListener('change', updatePreference);
   }, []);
-  const toggleMotion = () => {
-    pausedRef.current = !paused;
-    sceneRef.current?.setPaused(!paused);
-    setPaused(!paused);
+  const stirIdeas = () => {
+    setPaused(false);
+    setBurstSignal((signal) => signal + 1);
   };
   return (
-    <div className="idea-scene">
-      <div className="scene-fallback" aria-hidden="true">
-        <span>✳</span>
-        <span>✳</span>
-        <span>✳</span>
-      </div>
+    <div className="idea-scene" role="region" aria-label="Play with the ideas">
       {available && (
-        <canvas
-          ref={canvasRef}
-          aria-label="Floating sculptural pieces connect ideas, thinking and outcomes"
-          role="img"
-        />
+        <Suspense fallback={<SceneFallback />}>
+          <Ballpit
+            count={90}
+            colors={colors}
+            material="satin"
+            gravity={0}
+            drift={0.65}
+            minSize={0.7}
+            maxSize={1.4}
+            depth={3}
+            intro={false}
+            dpr={1.5}
+            paused={paused}
+            burstSignal={burstSignal}
+            onUnavailable={handleUnavailable}
+          />
+        </Suspense>
       )}
+      {!available && <SceneFallback />}
       <div className="scene-caption">
-        <span>Different perspectives.</span>
-        <span>One shared direction.</span>
+        <span>Good ideas move things.</span>
+        <span>
+          {available
+            ? 'Drag sideways. Tap the space.'
+            : 'Different perspectives. One shared direction.'}
+        </span>
       </div>
       {available && (
-        <button
-          className="motion-toggle"
-          onClick={toggleMotion}
-          aria-pressed={paused}
-        >
-          {paused ? 'Play motion' : 'Pause motion'}
-        </button>
+        <div className="scene-controls">
+          <button className="scene-stir" onClick={stirIdeas}>
+            Stir the ideas ↗
+          </button>
+          <button
+            className="motion-toggle"
+            onClick={() => setPaused(!paused)}
+            aria-pressed={paused}
+          >
+            {paused ? 'Play motion' : 'Pause motion'}
+          </button>
+        </div>
       )}
+    </div>
+  );
+}
+
+function SceneFallback() {
+  return (
+    <div className="scene-fallback" aria-hidden="true">
+      <span>●</span>
+      <span>●</span>
+      <span>●</span>
     </div>
   );
 }

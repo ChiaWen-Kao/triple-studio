@@ -25,67 +25,58 @@ export function IdeaJourney() {
   const sectionRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const media = gsap.matchMedia();
-    media.add(
-      '(prefers-reduced-motion: no-preference) and (min-width: 768px)',
-      () => {
-        const context = gsap.context(() => {
-          const timeline = gsap.timeline({
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top top',
-              end: '+=200%',
-              pin: '.journey-stage',
-              pinSpacing: false,
-              scrub: 0.8,
-              invalidateOnRefresh: true,
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      const context = gsap.context(() => {
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=200%',
+            pin: '.journey-stage',
+            pinSpacing: false,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          },
+        });
+        timeline
+          .to('.journey-orbit', { rotation: 120, scale: 0.72, duration: 1 }, 0)
+          .fromTo(
+            '.journey-piece',
+            {
+              x: (index) =>
+                Math.sin(index * 2.4) * Math.min(120, window.innerWidth * 0.2),
+              y: (index) =>
+                Math.cos(index * 2.4) * Math.min(120, window.innerWidth * 0.2),
             },
-          });
-          timeline
-            .to(
-              '.journey-orbit',
-              { rotation: 120, scale: 0.72, duration: 1 },
-              0,
-            )
-            .fromTo(
-              '.journey-piece',
-              {
-                x: (index) => Math.sin(index * 2.4) * 120,
-                y: (index) => Math.cos(index * 2.4) * 120,
-              },
-              { x: 0, y: 0, stagger: 0.025, duration: 1 },
-              0,
-            )
-            .to(
-              '.journey-chapter-0',
-              { autoAlpha: 0, y: -50, duration: 0.2 },
-              0.65,
-            )
-            .fromTo(
-              '.journey-chapter-1',
-              { autoAlpha: 0, y: 50 },
-              { autoAlpha: 1, y: 0, duration: 0.25 },
-              0.85,
-            )
-            .to(
-              '.journey-orbit',
-              { rotation: 240, scale: 1.1, duration: 1 },
-              1.2,
-            )
-            .to(
-              '.journey-chapter-1',
-              { autoAlpha: 0, y: -50, duration: 0.2 },
-              1.65,
-            )
-            .fromTo(
-              '.journey-chapter-2',
-              { autoAlpha: 0, y: 50 },
-              { autoAlpha: 1, y: 0, duration: 0.25 },
-              1.85,
-            );
-        }, sectionRef);
-        return () => context.revert();
-      },
-    );
+            { x: 0, y: 0, stagger: 0.025, duration: 1 },
+            0,
+          )
+          .to(
+            '.journey-chapter-0',
+            { autoAlpha: 0, y: -50, duration: 0.2 },
+            0.65,
+          )
+          .fromTo(
+            '.journey-chapter-1',
+            { autoAlpha: 0, y: 50 },
+            { autoAlpha: 1, y: 0, duration: 0.25 },
+            0.85,
+          )
+          .to('.journey-orbit', { rotation: 240, scale: 1.1, duration: 1 }, 1.2)
+          .to(
+            '.journey-chapter-1',
+            { autoAlpha: 0, y: -50, duration: 0.2 },
+            1.65,
+          )
+          .fromTo(
+            '.journey-chapter-2',
+            { autoAlpha: 0, y: 50 },
+            { autoAlpha: 1, y: 0, duration: 0.25 },
+            1.85,
+          );
+      }, sectionRef);
+      return () => context.revert();
+    });
     return () => media.revert();
   }, []);
   return (

@@ -81,10 +81,8 @@ a {
   pointer-events: none;
   text-shadow: 0 1px 8px #000;
 }
+.scene-stir,
 .motion-toggle {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
   border: 1px solid #ffffff60;
   color: white;
   border-radius: 3rem;
@@ -176,4 +174,26 @@ a {
 .contact-copy > p {
   font-size: 1.1rem;
   color: #575750;
+}
+
+.scene-controls {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.scene-stir {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--yellow);
+}
+@media (max-width: 640px) {
+  .scene-controls {
+    left: 1.25rem;
+    justify-content: space-between;
+  }
+  .idea-scene {
+    height: 68svh;
+  }
 }

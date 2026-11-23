@@ -1,0 +1,85 @@
+.case-study {
+  touch-action: pan-y;
+}
+@media (max-width: 767px) {
+  .case-study {
+    min-height: 0;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .case-copy {
+    display: contents;
+  }
+  .case-heading {
+    grid-row: 1;
+  }
+  .case-heading .eyebrow {
+    font-size: 0.65rem;
+    margin-bottom: 0.6rem;
+  }
+  .case-heading h3 {
+    font-size: 1.9rem;
+    max-width: 18ch;
+    margin-bottom: 0.7rem;
+  }
+  .case-placeholder {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  .case-visual {
+    grid-row: 2;
+    min-height: 0;
+    height: clamp(13rem, 30svh, 17rem);
+    border-radius: 0.7rem;
+  }
+  .case-slide {
+    grid-row: 3;
+    min-height: 8rem;
+  }
+  .case-slide .eyebrow {
+    font-size: 0.7rem;
+    margin: 0 0 0.5rem;
+  }
+  .case-slide h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .case-slide > p:last-child {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .case-controls {
+    grid-row: 4;
+    gap: 0.5rem;
+  }
+  .visual-corner {
+    display: none;
+  }
+  .visual-caption {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.5rem;
+    font-size: 0.65rem;
+  }
+  .product-composition,
+  .workflow-composition,
+  .web-composition {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+  }
+  .product-composition {
+    width: 175%;
+    max-width: none;
+    transform: translate(-50%, -50%) scale(0.48);
+  }
+  .workflow-composition {
+    width: 130%;
+    max-width: none;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  .web-composition {
+    width: 125%;
+    transform: translate(-50%, -50%) scale(0.65);
+  }
+}
