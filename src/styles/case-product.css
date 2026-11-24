@@ -33,11 +33,8 @@
   line-height: 1.1;
   letter-spacing: -0.05em;
 }
-.device-flower {
-  font-size: 8rem;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--red);
+.device-preview {
+  height: 12rem;
 }
 .device-row {
   display: flex;

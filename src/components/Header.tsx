@@ -34,7 +34,7 @@ export function Header() {
       </a>
       <div className="header-actions">
         <a className="pill pill-dark" href="#contact">
-          Let’s talk <span aria-hidden="true">•</span>
+          Let’s talk
         </a>
         <button
           ref={buttonRef}

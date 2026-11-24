@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:5173/triple-studio/.
+Open http://127.0.0.1:5173/wendava-studio/.
 
 ```sh
 npm run format
@@ -21,7 +21,7 @@ npm run build
 npm run preview
 ```
 
-`npm run format:write` formats the source. The production output is `dist/`; preview serves it at http://127.0.0.1:4173/triple-studio/.
+`npm run format:write` formats the source. The production output is `dist/`; preview serves it at http://127.0.0.1:4173/wendava-studio/.
 
 ## Structure
 
@@ -39,7 +39,9 @@ npm run preview
 
 ## Motion and accessibility
 
-The hero presents the three Wendava pixel characters on floating islands. Each character responds to clicks, taps and keyboard activation. A pause control stops the scene; reduced motion removes floating, jumping and scroll parallax. The portrait layout places Wen above Peter and Daniel so all three stay visible on phones. The shared transparent character sheet also supplies the team portraits. React Bits Scroll Reveal provides the word-by-word introduction. The scroll journey connects idea, thinking and outcome. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
+The hero uses a procedural, iridescent WENDAVA wordmark. Rounded letter surfaces are generated with Three.js Marching Cubes, with subtle idle motion and local pointer-driven deformation. Phones use a two-line composition and an automatic loop. A pause button and reduced-motion preferences keep the artwork still; a readable wordmark remains if WebGL cannot start. The three pixel characters remain in the team portraits.
+
+React Bits Scroll Reveal introduces the service and process headings as they reach 65% of the viewport. The process keeps the same twelve elements through exploration, three affinity groups and a red flower. Its pinned composition fits below the navigation; short viewports and reduced motion use a natural reading layout. The service contact link moves directly to the form so the intervening tunnel does not fast-forward. A second scene moves through a corridor of product ideas before the contact section. Scenes load separately, stop drawing off-screen and release their graphics resources on unmount.
 
 Case studies advance every 6.5 seconds only while visible. Text and animation share one chapter index. Hover and keyboard focus pause advancement; manual chapter selection pauses until Play is requested. Reduced motion disables autoplay and pinned scene transitions, retaining the information and manual controls. On phones, each case keeps its animation, chapter text and controls together in a compact card. Horizontal swipes select a chapter; vertical gestures remain page scrolling. The three process chapters retain their pinned, scroll-driven transitions on phones as well as desktops. Reduced-motion preferences and short landscape viewports switch the process to a flowing reading layout so chapter text cannot be trapped below the screen.
 
@@ -49,7 +51,7 @@ The visual direction follows the inspected reference's floating objects, text re
 
 The mobile layout follows observations of [Lusion](https://lusion.co/) (portrait hero, compact menu and full-screen navigation) and [Studio Dumbar’s Wabi case study](https://studiodumbar.com/work/wabi) (motion before concise narrative). These are interaction references; their media is not redistributed.
 
-- The hero fills the first screen below a compact header, with visible motion controls and a scroll cue.
+- The hero keeps its service description visible below a compact header, with a two-line wordmark, motion control and centered scroll cue.
 - Native modal navigation contains focus, locks background scrolling and restores focus when closed.
 - The featured-work grid uses two columns on desktop and one column with 15px gutters on phones. Previews retain a 20:13 aspect ratio. Titles roll into view; desktop hover reveals the arrow and moves the title.
 - Project details scroll horizontally on desktop and vertically on phones. Continuing to scroll at the desktop endpoint fills a 4.5-second progress indicator and opens the next project; stopping clears progress. The next-project preview expands to fill the screen before the new story appears. A button offers direct navigation; reduced motion skips the transition.
@@ -66,14 +68,14 @@ The build adds a readable HTML introduction and questions before the interactive
 
 ## Contact form
 
-The original FormSubmit integration and recipient, `kaiwang2027@gmail.com`, are retained. The form validates required fields, blocks duplicate submissions, preserves entries on failure and resets only after the service confirms acceptance. It times out after 20 seconds and does not retry automatically. Automated tests mock requests and do not send mail.
+The public contact address is `hello@wendava.co`. The original opaque FormSubmit endpoint is retained; changing the public email does not change that endpoint's recipient. The form validates required fields, blocks duplicate submissions, preserves entries on failure and resets only after the service confirms acceptance. It times out after 20 seconds and does not retry automatically. Automated tests mock requests and do not send mail.
 
 Delivery through FormSubmit remains unverified: the original integration previously returned activation-required responses. A successful request is not proof of inbox delivery. Keep the direct email link available. Before relying on form delivery, check an authorised test from the published URL, activation status, inbox arrival, fields and Reply-To. A chat request does not confirm a meeting time.
 
 ## Publication and recovery
 
-The Vite base path remains `/triple-studio/`. The existing **Deploy GitHub Pages** workflow checks formatting, lint, tests and the build, then publishes `dist/` on pushes to `main`. Pull requests validate without publishing.
+The Vite base path remains `/wendava-studio/`. The existing **Deploy GitHub Pages** workflow checks formatting, lint, tests and the build, then publishes `dist/` on pushes to `main`. Pull requests validate without publishing.
 
-Live site: https://chiawen-kao.github.io/triple-studio/.
+Live site: https://chiawen-kao.github.io/wendava-studio/.
 
 Verify the deployed revision and the actual page after publication, including local assets, navigation, chapter controls and contact feedback. To recover from a release regression, revert the relevant commit on `main` and allow the existing workflow to republish. Never force-push to roll back shared history.

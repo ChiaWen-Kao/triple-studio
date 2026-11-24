@@ -1,4 +1,4 @@
-import { IdeaScene } from './motion/IdeaScene';
+import { LiquidWordmark } from './motion/LiquidWordmark';
 
 export function Hero() {
   return (
@@ -10,17 +10,17 @@ export function Hero() {
           Real-world solutions.
         </h1>
         <p>
-          We turn your ideas and everyday challenges into useful digital
-          experiences.
+          We design and build websites, web apps, mobile apps and AI-powered
+          workflows for businesses.
         </p>
       </div>
-      <IdeaScene />
-      <div className="scene-baseline" aria-hidden="true">
-        <span>+</span>
-        <span>Ideas take shape</span>
+      <LiquidWordmark />
+      <a className="hero-scroll-cue" href="#services">
+        <span className="scroll-icon" aria-hidden="true">
+          <i />
+        </span>
         <span>Scroll to explore</span>
-        <span>+</span>
-      </div>
+      </a>
     </section>
   );
 }

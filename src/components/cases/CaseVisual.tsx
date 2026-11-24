@@ -26,7 +26,7 @@ export function CaseVisual({
               <br />
               more possible.
             </div>
-            <div className="device-flower">✳</div>
+            <div className="device-preview" />
             <div className="device-row">
               <i />
               <i />
@@ -49,7 +49,6 @@ export function CaseVisual({
             A request<span>↓</span>
           </div>
           <div className="workflow-node node-center">
-            <span>✳</span>
             {phase === 2 ? 'Human review' : 'One clear place'}
           </div>
           <div className="workflow-node node-out">
@@ -74,7 +73,6 @@ export function CaseVisual({
                 <br />
                 Made clear.
               </strong>
-              <div className="web-sculpture">✳</div>
               <span className="web-action">Discover more</span>
             </div>
           </div>

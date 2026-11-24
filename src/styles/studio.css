@@ -101,10 +101,6 @@ a {
   text-transform: uppercase;
   font-size: 0.75rem;
 }
-.scene-baseline > span:first-child,
-.scene-baseline > span:last-child {
-  font-size: 1.5rem;
-}
 @media (max-width: 640px) {
   .studio-header {
     padding-top: 1rem;
@@ -134,7 +130,7 @@ a {
     bottom: 5rem;
     left: 1.25rem;
   }
-  .scene-baseline span:nth-child(2) {
+  .scene-tagline {
     display: none;
   }
 }

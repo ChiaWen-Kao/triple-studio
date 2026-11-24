@@ -6,7 +6,7 @@ const questions = JSON.parse(
     'utf8',
   ),
 );
-const url = 'https://chiawen-kao.github.io/triple-studio/';
+const url = 'https://chiawen-kao.github.io/wendava-studio/';
 const description =
   'Wendava Studio helps founders and businesses turn ideas into useful products, clear websites and simpler workflows. Creative thinking. Real-world solutions.';
 const escapeHtml = (value) =>
@@ -26,7 +26,7 @@ const schema = {
       name: 'Wendava Studio',
       url,
       description,
-      email: 'kaiwang2027@gmail.com',
+      email: 'hello@wendava.co',
     },
     {
       '@type': 'WebSite',
@@ -63,7 +63,7 @@ const schema = {
     },
   ],
 };
-const fallback = `<main class="section"><h1>Wendava Studio</h1><h2>Creative thinking. Real-world solutions.</h2><p>${description}</p><p>We help people with an idea find a clear direction, and help established businesses make everyday work easier.</p><h2>How we work</h2><p>The idea: understand the problem. The thinking: explore and test a useful direction. The outcome: design, build and improve the solution.</p><h2>Selected work</h2><p>Three case studies are reserved for future projects. Client names, project details and results are not yet published.</p><section id="questions"><h2>A few useful answers</h2>${questions.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</section><p>Start a conversation: <a href="mailto:kaiwang2027@gmail.com">kaiwang2027@gmail.com</a></p></main>`;
+const fallback = `<main class="section"><h1>Wendava Studio</h1><h2>Creative thinking. Real-world solutions.</h2><p>${description}</p><p>We help people with an idea find a clear direction, and help established businesses make everyday work easier.</p><h2>How we work</h2><p>The idea: understand the problem. The thinking: explore and test a useful direction. The outcome: design, build and improve the solution.</p><h2>Selected work</h2><p>Three case studies are reserved for future projects. Client names, project details and results are not yet published.</p><section id="questions"><h2>A few useful answers</h2>${questions.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</section><p>Start a conversation: <a href="mailto:hello@wendava.co">hello@wendava.co</a></p></main>`;
 const indexPath = new URL('../dist/index.html', import.meta.url);
 let html = await readFile(indexPath, 'utf8');
 html = html

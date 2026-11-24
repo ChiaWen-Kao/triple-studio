@@ -14,7 +14,13 @@ const look: RevealLook = {
   highlightColor: '',
 };
 
-export default function ScrollReveal({ children }: { children: string }) {
+export default function ScrollReveal({
+  children,
+  id,
+}: {
+  children: string;
+  id?: string;
+}) {
   const containerRef = useRef<HTMLHeadingElement>(null);
   useLayoutEffect(() => {
     const element = containerRef.current;
@@ -48,7 +54,7 @@ export default function ScrollReveal({ children }: { children: string }) {
         onUpdate: render,
         scrollTrigger: {
           trigger: element,
-          start: 'top 90%',
+          start: 'top 65%',
           end: 'top 35%',
           scrub: 0.45,
         },
@@ -67,7 +73,12 @@ export default function ScrollReveal({ children }: { children: string }) {
     return () => media.revert();
   }, [children]);
   return (
-    <h2 ref={containerRef} className="scroll-reveal" aria-label={children}>
+    <h2
+      id={id}
+      ref={containerRef}
+      className="scroll-reveal"
+      aria-label={children}
+    >
       <span aria-hidden="true">
         {children.split(/(\s+)/).map((word, index) =>
           word.trim() === '' ? (

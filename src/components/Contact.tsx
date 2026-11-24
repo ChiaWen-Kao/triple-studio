@@ -20,6 +20,7 @@ export function Contact() {
       id="contact"
       className="section contact"
       aria-labelledby="contact-heading"
+      tabIndex={-1}
     >
       <div className="contact-copy">
         <h2 id="contact-heading" className="section-title">
@@ -125,7 +126,6 @@ export function Contact() {
           >
             {isSubmitting ? 'Sending…' : 'Request a chat'}
           </button>
-          <p className="form-note">We'll be in touch soon to arrange a chat.</p>
         </div>
         <p
           className="form-status"
@@ -149,7 +149,8 @@ export function Contact() {
             : ''}
         </p>
         <p className="form-alternative">
-          Prefer email? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          We’ll be in touch soon to arrange a chat. Prefer email?{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </p>
       </form>
     </section>

@@ -19,10 +19,10 @@ export function App() {
       <Header />
       <main id="main">
         <Hero />
+        <Services />
         <StudioIntro />
         <IdeaJourney />
         <CaseStudies />
-        <Services />
         <Team />
         <StudioPortal />
         <Contact />

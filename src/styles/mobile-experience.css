@@ -73,11 +73,12 @@
     padding: 0.65rem 0.85rem;
   }
   .scene-baseline {
+    justify-content: center;
     min-height: 2.75rem;
     padding: 0;
     font-size: 0.65rem;
   }
-  .scene-baseline span:nth-child(2) {
+  .scene-tagline {
     display: none;
   }
   .studio-intro {

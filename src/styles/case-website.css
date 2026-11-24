@@ -50,16 +50,6 @@
   position: relative;
   z-index: 1;
 }
-.web-sculpture {
-  color: #ef3d24;
-  font-size: 14rem;
-  position: absolute;
-  right: -2rem;
-  bottom: -2rem;
-  line-height: 1;
-  transform: rotate(35deg);
-  transition: transform 1.2s;
-}
 .web-action {
   display: inline-block;
   margin-top: 3rem;
@@ -73,9 +63,6 @@
 }
 .phase-1 .web-window {
   transform: rotate(0) rotateY(0) scale(1);
-}
-.phase-1 .web-sculpture {
-  transform: rotate(90deg);
 }
 .phase-2 .web-window {
   transform: rotate(5deg) rotateY(-10deg) scale(0.95);

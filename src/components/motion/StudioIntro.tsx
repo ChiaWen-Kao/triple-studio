@@ -10,9 +10,6 @@ export function StudioIntro() {
           <br />
           You just need something worth solving.
         </p>
-        <a className="pill pill-dark" href="#services">
-          Explore what we do
-        </a>
       </div>
     </section>
   );

@@ -19,7 +19,7 @@ export function CaseStudies() {
     >
       <div className="work-gallery-intro">
         <h2 id="work-heading" className="work-gallery-heading" data-reveal>
-          Featured Work
+          Feature work.
         </h2>
         <p>Ideas made useful. Three upcoming stories from our studio.</p>
       </div>
